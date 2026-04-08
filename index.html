@@ -6,207 +6,230 @@
 <title>Bundles Clés en Main — Televic Conference France</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --green: #a6cf39;
-    --green-dark: #88ac2a;
-    --green-light: #c8e36f;
-    --white: #FFFFFF;
-    --black-90: #191919;
-    --black-75: #404040;
-    --black-50: #808080;
-    --black-30: #b3b3b3;
-    --black-12: #e0e0e0;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green:#a6cf39; --green-d:#88ac2a; --green-l:#c8e36f;
+  --white:#fff; --bg:#f5f4f0;
+  --k90:#191919; --k75:#404040; --k50:#808080; --k30:#b3b3b3; --k12:#e0e0e0;
+  --sidebar:260px; --header:60px;
+  --conf:#2a6496; --video:#e67e22; --sono:#8e44ad; --ecran:#27ae60;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--k90);display:flex;flex-direction:column;min-height:100vh;}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background-color: #f7f6f3;
-    min-height: 100vh;
-    color: var(--black-90);
-  }
+/* ── HEADER ── */
+.hdr{height:var(--header);background:var(--k90);display:flex;align-items:center;justify-content:space-between;padding:0 20px 0 0;position:fixed;top:0;left:0;right:0;z-index:300;border-bottom:3px solid var(--green);}
+.hdr-left{display:flex;align-items:center;gap:12px;padding-left:20px;}
+.logo{width:32px;height:32px;background:var(--green);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--k90);}
+.hdr-title{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--white);}
+.hdr-sub{font-size:10px;color:var(--k30);letter-spacing:.03em;}
+.hdr-right{display:flex;align-items:center;gap:10px;}
+.tag-year{background:var(--green);color:var(--k90);font-size:10px;font-weight:800;letter-spacing:.08em;padding:4px 10px;border-radius:4px;text-transform:uppercase;}
+.mode-btn{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:7px;padding:6px 12px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:var(--k30);transition:all .2s;user-select:none;}
+.mode-btn:hover{background:rgba(255,255,255,.14);color:var(--white);}
+.mode-btn.on{background:var(--green);border-color:var(--green);color:var(--k90);}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--k50);flex-shrink:0;transition:background .2s;}
+.mode-btn.on .dot{background:var(--k75);}
 
-  /* ── HEADER ── */
-  header {
-    background: var(--black-90); color: var(--white); padding: 0 48px;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 72px; position: sticky; top: 0; z-index: 200;
-    border-bottom: 3px solid var(--green);
-  }
-  .logo-block { display: flex; align-items: center; gap: 16px; }
-  .logo-mark { width: 36px; height: 36px; background: var(--green); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; color: var(--black-90); }
-  .logo-text { font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
-  .logo-sub { font-size: 11px; font-weight: 300; color: var(--black-30); letter-spacing: 0.04em; }
-  .header-right { display: flex; align-items: center; gap: 16px; }
-  .header-tag { background: var(--green); color: var(--black-90); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 4px; }
+/* ── LAYOUT ── */
+.layout{display:flex;margin-top:var(--header);min-height:calc(100vh - var(--header));}
 
-  /* MODE BTN */
-  .mode-btn {
-    display: flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.15);
-    border-radius: 8px; padding: 7px 14px; cursor: pointer;
-    font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600;
-    color: var(--black-30); letter-spacing: 0.04em; transition: all 0.2s; user-select: none;
-  }
-  .mode-btn:hover { background: rgba(255,255,255,0.14); color: var(--white); }
-  .mode-btn.edit-active { background: var(--green); border-color: var(--green); color: var(--black-90); }
-  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--black-50); transition: background 0.2s; flex-shrink: 0; }
-  .dot.on { background: #88cf39; }
-  .edit-active .dot.on { background: var(--black-75); }
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar);background:var(--white);border-right:1px solid var(--k12);position:fixed;top:var(--header);bottom:0;overflow-y:auto;display:flex;flex-direction:column;z-index:200;}
+.sb-head{padding:16px 16px 12px;border-bottom:1px solid var(--k12);}
+.sb-label{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--k50);margin-bottom:10px;}
+.sb-search{width:100%;border:1.5px solid var(--k12);border-radius:7px;padding:6px 10px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--k90);outline:none;background:var(--bg);}
+.sb-search:focus{border-color:var(--green);}
+.sb-nav{flex:1;padding:8px 0;}
+.sb-item{display:flex;align-items:center;gap:10px;padding:9px 16px;cursor:pointer;transition:background .12s;border-left:3px solid transparent;}
+.sb-item:hover{background:#f0fad0;}
+.sb-item.active{background:#eef8d0;border-left-color:var(--green);}
+.sb-num{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;color:var(--k50);width:18px;flex-shrink:0;}
+.sb-item.active .sb-num{color:var(--green-d);}
+.sb-info{flex:1;min-width:0;}
+.sb-name{font-size:11.5px;font-weight:600;color:var(--k90);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sb-item.active .sb-name{color:var(--k90);}
+.sb-sys{font-size:10px;color:var(--k50);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sb-price{font-size:10px;font-weight:700;color:var(--green-d);white-space:nowrap;margin-left:4px;}
+.sb-divider{height:1px;background:var(--k12);margin:4px 16px;}
 
-  /* MODAL */
-  .overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); align-items: center; justify-content: center; }
-  .overlay.open { display: flex; }
-  .modal { background: var(--white); border-radius: 16px; padding: 40px 40px 32px; width: 340px; box-shadow: 0 24px 64px rgba(0,0,0,0.3); animation: mIn 0.2s ease; }
-  @keyframes mIn { from{transform:scale(.94) translateY(8px);opacity:0} to{transform:scale(1);opacity:1} }
-  .modal-icon { font-size: 32px; margin-bottom: 16px; text-align: center; }
-  .modal h2 { font-size: 18px; font-weight: 700; color: var(--black-90); margin-bottom: 6px; text-align: center; }
-  .modal p { font-size: 13px; color: var(--black-50); text-align: center; margin-bottom: 24px; line-height: 1.5; }
-  .modal input { width: 100%; border: 2px solid var(--black-12); border-radius: 8px; padding: 11px 14px; font-size: 16px; font-family: 'DM Mono', monospace; letter-spacing: 0.25em; outline: none; margin-bottom: 12px; transition: border-color 0.15s; text-align: center; }
-  .modal input:focus { border-color: var(--green); }
-  .modal input.err { border-color: #e74c3c; animation: shake .3s; }
-  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
-  .modal-err { font-size: 12px; color: #e74c3c; text-align: center; margin-bottom: 12px; min-height: 16px; }
-  .modal-btns { display: flex; gap: 10px; }
-  .btn-cancel { flex: 1; padding: 10px; border-radius: 8px; border: 1.5px solid var(--black-12); background: none; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--black-50); transition: all .15s; font-family: 'DM Sans',sans-serif; }
-  .btn-cancel:hover { background: var(--black-12); }
-  .btn-unlock { flex: 2; padding: 10px; border-radius: 8px; border: none; background: var(--black-90); cursor: pointer; font-size: 13px; font-weight: 700; color: var(--white); transition: all .15s; font-family: 'DM Sans',sans-serif; }
-  .btn-unlock:hover { background: var(--green); color: var(--black-90); }
+/* ── MAIN ── */
+.main{margin-left:var(--sidebar);flex:1;padding:24px;overflow-y:auto;}
 
-  /* EDIT BANNER */
-  .edit-banner { display: none; background: var(--green); padding: 10px 48px; font-size: 12px; font-weight: 700; color: var(--black-75); letter-spacing: 0.05em; align-items: center; gap: 10px; position: sticky; top: 75px; z-index: 190; }
-  .edit-banner.open { display: flex; }
-  .edit-banner span { flex: 1; }
-  .btn-lock { background: var(--black-90); color: var(--white); border: none; border-radius: 6px; padding: 5px 12px; font-size: 11px; font-weight: 700; cursor: pointer; font-family: 'DM Sans',sans-serif; letter-spacing: 0.05em; }
-  .btn-lock:hover { background: var(--black-75); }
+/* ── EDIT BANNER ── */
+.edit-banner{display:none;background:var(--green);padding:8px 24px;font-size:11px;font-weight:700;color:var(--k75);align-items:center;gap:10px;position:fixed;top:var(--header);left:var(--sidebar);right:0;z-index:190;}
+.edit-banner.open{display:flex;}
+.edit-banner span{flex:1;}
+.btn-lock{background:var(--k90);color:var(--white);border:none;border-radius:5px;padding:4px 10px;font-size:10px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:.05em;}
+.edit-top-pad{display:none;height:32px;}
+.edit-top-pad.open{display:block;}
 
-  /* HERO */
-  .hero { padding: 72px 48px 56px; max-width: 1200px; margin: 0 auto; }
-  .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--black-50); margin-bottom: 16px; }
-  .hero-title { font-size: clamp(36px,5vw,64px); font-weight: 700; line-height: 1.05; color: var(--black-90); letter-spacing: -1.5px; margin-bottom: 20px; }
-  .hero-title span { color: var(--green-dark); }
-  .hero-sub { font-size: 16px; color: var(--black-75); max-width: 560px; line-height: 1.6; margin-bottom: 36px; }
-  .brand-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip { background: var(--white); border: 1.5px solid var(--black-12); border-radius: 100px; padding: 5px 14px; font-size: 12px; font-weight: 600; color: var(--black-75); }
+/* ── BUNDLE VIEW ── */
+.bundle-view{display:none;}
+.bundle-view.active{display:block;}
 
-  /* SECTIONS */
-  .section { max-width: 1200px; margin: 0 auto; padding: 0 48px 72px; }
-  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--black-50); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--black-12); }
+/* BUNDLE HEADER */
+.bh{background:var(--k90);color:var(--white);border-radius:12px 12px 0 0;padding:20px 24px 16px;position:relative;overflow:hidden;}
+.bh::after{content:'';position:absolute;top:0;right:0;bottom:0;width:4px;background:var(--green);}
+.bh-num{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;color:var(--green);letter-spacing:.12em;margin-bottom:5px;}
+.bh-name{font-size:20px;font-weight:700;line-height:1.2;margin-bottom:5px;}
+.bh-meta{font-size:11px;color:var(--k30);display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.bh-sys{font-family:'DM Mono',monospace;font-size:10px;background:rgba(166,207,57,.15);color:var(--green-l);padding:2px 8px;border-radius:4px;}
 
-  /* OVERVIEW */
-  .ov-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid var(--black-12); }
-  .ov-table { width: 100%; border-collapse: collapse; }
-  .ov-table thead tr { background: var(--black-90); color: var(--white); }
-  .ov-table thead th { padding: 14px 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
-  .ov-table thead th:first-child { width: 54px; text-align: center; }
-  .ov-table thead th:last-child { text-align: right; }
-  .ov-table tbody tr { border-bottom: 1px solid var(--black-12); transition: background .12s; cursor: pointer; }
-  .ov-table tbody tr:last-child { border-bottom: none; }
-  .ov-table tbody tr:hover { background: #f0fad0; }
-  .ov-link-arrow { font-size: 11px; color: var(--green-dark); opacity: 0; transition: opacity .15s; margin-left: 6px; }
-  .ov-table tbody tr:hover .ov-link-arrow { opacity: 1; }
-  .ov-table tbody td { padding: 14px 20px; font-size: 14px; color: var(--black-75); }
-  .ov-table tbody td:first-child { text-align: center; font-family: 'DM Mono',monospace; font-size: 12px; color: var(--black-50); }
-  .ov-table tbody td:nth-child(2) { font-weight: 600; color: var(--black-90); }
-  .ov-table tbody td.sys { font-size: 12px; font-family: 'DM Mono',monospace; color: var(--black-50); }
-  .ov-table tbody td.prc { text-align: right; font-weight: 700; font-size: 15px; color: var(--black-90); white-space: nowrap; font-variant-numeric: tabular-nums; }
+/* PRICE BAR */
+.price-bar{background:var(--green);padding:10px 24px;display:flex;align-items:center;justify-content:space-between;}
+.price-lbl{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--k75);}
+.price-val{font-size:22px;font-weight:800;color:var(--k90);font-variant-numeric:tabular-nums;}
+.price-val.sp{font-size:14px;font-weight:600;color:var(--k75);}
 
-  /* GRID */
-  .bundles-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(520px,1fr)); gap: 24px; }
-  .bundle-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid var(--black-12); display: flex; flex-direction: column; }
-  .bh { background: var(--black-90); color: var(--white); padding: 22px 28px 18px; position: relative; overflow: hidden; }
-  .bh::after { content: ''; position: absolute; top:0;right:0;bottom:0;width:4px;background:var(--green); }
-  .bnum { font-family: 'DM Mono',monospace; font-size: 11px; font-weight: 500; color: var(--green); letter-spacing: 0.12em; margin-bottom: 6px; }
-  .bname { font-size: 18px; font-weight: 700; line-height: 1.2; margin-bottom: 6px; }
-  .bmeta { font-size: 12px; color: var(--black-30); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-  .bmeta .sys { font-family: 'DM Mono',monospace; font-size: 11px; background: rgba(166,207,57,.15); color: var(--green-light); padding: 2px 8px; border-radius: 4px; }
+/* BUNDLE BODY */
+.bcard{background:var(--white);border-radius:0 0 12px 12px;border:1px solid var(--k12);border-top:none;overflow:hidden;}
+.bdesc{padding:16px 24px 0;font-size:12.5px;color:var(--k50);line-height:1.55;font-style:italic;border-bottom:1px solid var(--k12);padding-bottom:16px;}
 
-  .bprice { background: var(--green); padding: 10px 28px; display: flex; align-items: center; justify-content: space-between; }
-  .bprice-lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black-75); }
-  .bprice-val { font-size: 20px; font-weight: 700; color: var(--black-90); font-variant-numeric: tabular-nums; }
-  .bprice-val.sp { font-size: 14px; font-weight: 600; color: var(--black-75); }
+/* BOM TABLE */
+.bom-section{padding:0 24px 20px;}
+.bom-title{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--k50);padding:14px 0 8px;display:flex;align-items:center;gap:8px;}
+.bom-title::after{content:'';flex:1;height:1px;background:var(--k12);}
+.bom{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed;}
+.bom col.c1{width:36%;}
+.bom col.c2{width:13%;}
+.bom col.c3{width:14%;}
+.bom col.c4{width:7%;}
+.bom col.c5{width:14%;}
+.bom col.c6{width:16%;}
+.bom thead th{padding:6px 8px;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--k50);text-align:left;background:var(--bg);border-bottom:1px solid var(--k12);}
+.bom thead th.r{text-align:right;}
+.bom thead th.c{text-align:center;}
 
-  .bdesc { padding: 20px 28px 0; font-size: 13px; color: var(--black-50); line-height: 1.55; font-style: italic; }
+/* Category header rows */
+.cat-hdr td{padding:5px 8px 4px;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-top:1.5px solid;border-bottom:none;}
+.cat-conf td{color:var(--conf);border-color:#2a649630;background:#2a649608;}
+.cat-video td{color:var(--video);border-color:#e67e2230;background:#e67e2208;}
+.cat-sono td{color:var(--sono);border-color:#8e44ad30;background:#8e44ad08;}
+.cat-ecran td{color:var(--ecran);border-color:#27ae6030;background:#27ae6008;}
 
-  /* BOM */
-  .bom-wrap { padding: 20px 28px 0; overflow-x: auto; }
-  .bom { width: 100%; border-collapse: collapse; font-size: 12px; }
-  .bom thead tr { background: var(--black-12); }
-  .bom thead th { padding: 8px 10px; font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--black-75); text-align: left; white-space: nowrap; }
-  .bom thead th.r { text-align: right; }
-  .bom thead th.c { text-align: center; }
-  .bom tbody tr.dr { border-bottom: 1px solid var(--black-12); transition: background .12s; cursor: pointer; }
-  .bom tbody tr.dr:last-of-type { border-bottom: none; }
-  .bom tbody tr.dr:hover { background: #f0fad0; }
+/* Data rows */
+.dr{border-bottom:1px solid var(--k12);cursor:pointer;transition:background .1s;}
+.dr:hover{background:#f5fde8;}
+.dr td{padding:7px 8px;color:var(--k75);vertical-align:middle;overflow:hidden;text-overflow:ellipsis;}
+.dr td.dn{white-space:normal;line-height:1.3;position:relative;}
+.dr td.ref{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--k50);}
+.dr td.brand{font-size:10px;font-weight:700;}
+.dr td.qc{text-align:center;}
+.dr td.pr{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.dr td.lt{text-align:right;white-space:nowrap;font-weight:600;font-variant-numeric:tabular-nums;}
+.brand-televic{color:#2a6496;} .brand-lumens{color:#e67e22;} .brand-renkus{color:#8e44ad;} .brand-lea{color:#c0392b;} .brand-qs{color:#27ae60;} .brand-arthur{color:#2c3e50;}
 
-  /* HOVER LINK BADGE */
-  .bom tbody tr.dr td.dname { position: relative; padding-right: 28px; }
-  .link-badge {
-    display: none; position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
-    font-size: 9px; font-weight: 800; background: var(--green); color: var(--black-90);
-    padding: 2px 6px; border-radius: 4px; letter-spacing: .04em; pointer-events: none; white-space: nowrap;
-  }
-  .bom tbody tr.dr:hover .link-badge { display: inline-block; }
+/* Link badge */
+.lb{display:none;position:absolute;right:4px;top:50%;transform:translateY(-50%);font-size:8px;font-weight:800;background:var(--green);color:var(--k90);padding:1px 5px;border-radius:3px;pointer-events:none;white-space:nowrap;}
+.dr:hover .lb{display:inline-block;}
 
-  .bom tbody td { padding: 8px 10px; color: var(--black-75); vertical-align: middle; }
-  .bom tbody td.ref { font-family: 'DM Mono',monospace; font-size: 10.5px; color: var(--black-50); white-space: nowrap; }
-  .bom tbody td.brand { font-size: 11px; font-weight: 600; white-space: nowrap; }
-  .brand-televic { color: #2a6496; }
-  .brand-lumens  { color: #e67e22; }
-  .brand-renkus  { color: #8e44ad; }
-  .brand-lea     { color: #c0392b; }
-  .brand-qs      { color: #27ae60; }
-  .brand-arthur  { color: #2c3e50; }
-  .bom tbody td.qty-cell { text-align: center; }
-  .qty-text { font-weight: 600; color: var(--black-90); }
-  .qty-input {
-    display: none; width: 56px; padding: 4px 6px; text-align: center;
-    border: 2px solid var(--green); border-radius: 6px;
-    font-family: 'DM Mono',monospace; font-size: 12px; font-weight: 600;
-    color: var(--black-90); background: #f7fde8; outline: none;
-  }
-  body.edit .qty-input { display: inline-block; }
-  body.edit .qty-text { display: none; }
-  .bom tbody td.pu { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .bom tbody td.lt { text-align: right; white-space: nowrap; font-weight: 600; font-variant-numeric: tabular-nums; }
-  .bom-foot { background: var(--black-90) !important; }
-  .bom-foot td { color: var(--white) !important; font-weight: 700 !important; padding: 10px !important; }
-  .bom-foot td.ft-val { color: var(--green) !important; font-size: 14px !important; text-align: right; white-space: nowrap; }
+/* Qty input */
+.qi{display:none;width:50px;padding:3px 5px;text-align:center;border:2px solid var(--green);border-radius:5px;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;color:var(--k90);background:#f5ffe8;outline:none;}
+body.edit .qi{display:inline-block;}
+body.edit .qt{display:none;}
 
-  /* SPECS */
-  .specs { padding: 16px 28px 0; }
-  .specs-ttl { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--black-50); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-  .specs-ttl::before { content: '■'; color: var(--green-dark); font-size: 8px; }
-  .specs ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-  .specs li { font-size: 12px; color: var(--black-75); line-height: 1.4; padding-left: 12px; position: relative; }
-  .specs li::before { content: '·'; position: absolute; left: 0; color: var(--green-dark); font-weight: 700; }
+/* Subtotal rows */
+.st-row td{padding:5px 8px 7px;text-align:right;font-size:10px;font-weight:700;font-variant-numeric:tabular-nums;border-top:none;}
+.st-row td.st-lbl{text-align:right;letter-spacing:.06em;text-transform:uppercase;font-size:9px;}
 
-  /* OPTION */
-  .opt { padding: 14px 28px 24px; margin-top: 14px; border-top: 1px solid var(--black-12); }
-  .opt-lbl { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--black-50); margin-bottom: 6px; }
-  .opt-txt { font-size: 12px; color: var(--black-50); line-height: 1.55; }
+/* Extras rows (added items) */
+.extra-row{border-bottom:1px dashed var(--k12);background:#f9fff0;}
+.extra-row td{padding:6px 8px;color:var(--k75);vertical-align:middle;}
+.extra-row td.dn{position:relative;}
+.remove-btn{position:absolute;right:4px;top:50%;transform:translateY(-50%);background:#fee;border:1px solid #fcc;color:#c00;border-radius:4px;font-size:9px;font-weight:700;padding:1px 5px;cursor:pointer;display:none;}
+body.edit .extra-row:hover .remove-btn{display:block;}
 
-  /* TOOLTIP */
-  #tip { display: none; position: fixed; z-index: 300; background: var(--black-90); color: var(--white); font-size: 11px; font-weight: 600; padding: 6px 12px; border-radius: 6px; pointer-events: none; white-space: nowrap; border-left: 3px solid var(--green); box-shadow: 0 4px 16px rgba(0,0,0,.25); }
-  #tip.on { display: block; }
+/* Total row */
+.tot-row{background:var(--k90);}
+.tot-row td{padding:10px 8px;color:var(--white);font-weight:700;}
+.tot-row td.tv{color:var(--green);font-size:15px;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;}
 
-  /* DISCLAIMER */
-  .disclaimer { max-width: 1200px; margin: 0 auto 32px; padding: 0 48px; }
-  .disclaimer-inner { background: var(--white); border: 1px solid var(--black-12); border-radius: 10px; font-size: 12px; color: var(--black-50); line-height: 1.7; padding: 14px 24px; }
+/* SPECS & OPTION */
+.specs-opt{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--k12);}
+.specs-block,.opt-block{padding:16px 24px;}
+.specs-block{border-right:1px solid var(--k12);}
+.block-lbl{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--k50);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.block-lbl::before{content:'■';font-size:7px;color:var(--green-d);}
+.specs-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.specs-list li{font-size:11.5px;color:var(--k75);line-height:1.4;padding-left:10px;position:relative;}
+.specs-list li::before{content:'·';position:absolute;left:0;color:var(--green-d);font-weight:700;}
+.opt-text{font-size:11.5px;color:var(--k50);line-height:1.6;}
 
-  /* HERO */
-  .hero { padding: 56px 48px 48px; max-width: 1200px; margin: 0 auto; }
+/* ADD EXTRAS BUTTON */
+.add-extras-bar{padding:14px 24px;border-top:1px solid var(--k12);display:flex;align-items:center;gap:10px;}
+.btn-add-extra{display:flex;align-items:center;gap:6px;background:var(--k90);color:var(--white);border:none;border-radius:7px;padding:8px 16px;font-size:11px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:.04em;transition:all .15s;}
+.btn-add-extra:hover{background:var(--green-d);}
+.extras-hint{font-size:11px;color:var(--k50);font-style:italic;}
+body:not(.edit) .add-extras-bar{display:none;}
 
-  footer { background: var(--black-90); color: var(--black-30); text-align: center; padding: 28px 48px; font-size: 12px; line-height: 1.8; margin-top: 8px; }
-  footer strong { color: var(--white); }
-  footer a { color: var(--green); text-decoration: none; }
+/* ── EXTRAS DRAWER ── */
+.drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:400;backdrop-filter:blur(3px);}
+.drawer-overlay.open{display:block;}
+.drawer{position:fixed;right:-520px;top:0;bottom:0;width:520px;background:var(--white);z-index:401;box-shadow:-8px 0 32px rgba(0,0,0,.15);transition:right .25s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
+.drawer.open{right:0;}
+.drawer-hdr{background:var(--k90);color:var(--white);padding:20px 20px 16px;flex-shrink:0;}
+.drawer-title{font-size:16px;font-weight:700;margin-bottom:4px;}
+.drawer-sub{font-size:11px;color:var(--k30);}
+.drawer-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.1);border:none;color:var(--white);width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;}
+.drawer-close:hover{background:rgba(255,255,255,.2);}
+.drawer-search-bar{padding:12px 16px;border-bottom:1px solid var(--k12);flex-shrink:0;}
+.drawer-search{width:100%;border:1.5px solid var(--k12);border-radius:7px;padding:7px 12px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--k90);outline:none;}
+.drawer-search:focus{border-color:var(--green);}
+.drawer-filters{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.filter-chip{padding:3px 10px;border-radius:100px;border:1.5px solid var(--k12);font-size:10px;font-weight:700;cursor:pointer;transition:all .12s;background:var(--white);color:var(--k75);}
+.filter-chip:hover{border-color:var(--green-d);color:var(--green-d);}
+.filter-chip.on{background:var(--k90);border-color:var(--k90);color:var(--white);}
+.drawer-list{flex:1;overflow-y:auto;padding:8px 0;}
+.extra-group-hdr{padding:8px 16px 4px;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--k50);position:sticky;top:0;background:var(--white);z-index:1;border-bottom:1px solid var(--k12);}
+.extra-item{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--k12);cursor:pointer;transition:background .1s;}
+.extra-item:hover{background:#f5fde8;}
+.extra-item.added{background:#eef8d0;opacity:.6;pointer-events:none;}
+.ei-info{flex:1;min-width:0;}
+.ei-name{font-size:12px;font-weight:600;color:var(--k90);margin-bottom:2px;}
+.ei-ref{font-family:'DM Mono',monospace;font-size:10px;color:var(--k50);}
+.ei-brand{font-size:10px;font-weight:700;margin-top:2px;}
+.ei-price{font-size:12px;font-weight:700;color:var(--k90);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.ei-sp{font-size:10px;color:var(--k50);font-style:italic;}
+.ei-add{background:var(--green);border:none;color:var(--k90);width:26px;height:26px;border-radius:6px;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .12s;}
+.ei-add:hover{background:var(--green-d);}
+.ei-cat-badge{font-size:8px;font-weight:800;padding:2px 6px;border-radius:3px;text-transform:uppercase;letter-spacing:.05em;margin-top:3px;display:inline-block;}
+.badge-conf{background:#2a649615;color:#2a6496;}
+.badge-video{background:#e67e2215;color:#e67e22;}
+.badge-sono{background:#8e44ad15;color:#8e44ad;}
+.badge-ecran{background:#27ae6015;color:#27ae60;}
+.drawer-empty{padding:32px;text-align:center;color:var(--k50);font-size:13px;}
 
-  @media(max-width:680px){
-    header,.hero,.section { padding-left:20px;padding-right:20px; }
-    .bundles-grid { grid-template-columns:1fr; }
-    .specs ul { grid-template-columns:1fr; }
-  }
+/* ── MODAL ── */
+.overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;}
+.overlay.open{display:flex;}
+.modal{background:var(--white);border-radius:14px;padding:36px 36px 28px;width:320px;box-shadow:0 24px 64px rgba(0,0,0,.3);animation:mIn .2s ease;}
+@keyframes mIn{from{transform:scale(.94) translateY(8px);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-icon{font-size:28px;margin-bottom:14px;text-align:center;}
+.modal h2{font-size:17px;font-weight:700;color:var(--k90);margin-bottom:5px;text-align:center;}
+.modal p{font-size:12px;color:var(--k50);text-align:center;margin-bottom:20px;line-height:1.5;}
+.modal input{width:100%;border:2px solid var(--k12);border-radius:7px;padding:10px 12px;font-size:16px;font-family:'DM Mono',monospace;letter-spacing:.25em;outline:none;margin-bottom:10px;transition:border-color .15s;text-align:center;}
+.modal input:focus{border-color:var(--green);}
+.modal input.err{border-color:#e74c3c;animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.modal-err{font-size:11px;color:#e74c3c;text-align:center;margin-bottom:10px;min-height:15px;}
+.modal-btns{display:flex;gap:8px;}
+.btn-cancel{flex:1;padding:9px;border-radius:7px;border:1.5px solid var(--k12);background:none;cursor:pointer;font-size:12px;font-weight:600;color:var(--k50);font-family:'DM Sans',sans-serif;}
+.btn-cancel:hover{background:var(--k12);}
+.btn-unlock{flex:2;padding:9px;border-radius:7px;border:none;background:var(--k90);cursor:pointer;font-size:12px;font-weight:700;color:var(--white);font-family:'DM Sans',sans-serif;}
+.btn-unlock:hover{background:var(--green);color:var(--k90);}
+
+/* ── TOOLTIP ── */
+#tip{display:none;position:fixed;z-index:600;background:var(--k90);color:var(--white);font-size:10px;font-weight:600;padding:5px 10px;border-radius:5px;pointer-events:none;white-space:nowrap;border-left:3px solid var(--green);box-shadow:0 3px 12px rgba(0,0,0,.25);}
+#tip.on{display:block;}
+
+@media(max-width:900px){
+  .sidebar{width:200px;}
+  .main{margin-left:200px;}
+  .edit-banner{left:200px;}
+  .specs-list{grid-template-columns:1fr;}
+  .specs-opt{grid-template-columns:1fr;}
+  .specs-block{border-right:none;border-bottom:1px solid var(--k12);}
+}
 </style>
 </head>
 <body>
@@ -228,17 +251,38 @@
   </div>
 </div>
 
-<!-- HEADER -->
-<header>
-  <div class="logo-block">
-    <div class="logo-mark">TC</div>
-    <div>
-      <div class="logo-text">Televic Conference France</div>
-      <div class="logo-sub">Solutions Conférence Île-de-France</div>
+<!-- EXTRAS DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-hdr" style="position:relative;">
+    <div class="drawer-title">➕ Ajouter un complément</div>
+    <div class="drawer-sub" id="drawerSub">Accessoires et logiciels disponibles pour ce bundle</div>
+    <button class="drawer-close" onclick="closeDrawer()">×</button>
+  </div>
+  <div class="drawer-search-bar">
+    <input type="text" class="drawer-search" id="drawerSearch" placeholder="Rechercher un produit…" oninput="filterExtras()">
+    <div class="drawer-filters" id="drawerFilters">
+      <span class="filter-chip on" data-cat="all" onclick="toggleFilter(this)">Tous</span>
+      <span class="filter-chip" data-cat="conf" onclick="toggleFilter(this)">🎤 Conférence</span>
+      <span class="filter-chip" data-cat="video" onclick="toggleFilter(this)">📷 Vidéo</span>
+      <span class="filter-chip" data-cat="sono" onclick="toggleFilter(this)">🔊 Sono</span>
+      <span class="filter-chip" data-cat="service" onclick="toggleFilter(this)">🛠 Service</span>
     </div>
   </div>
-  <div class="header-right">
-    <div class="header-tag">Tarifs HT indicatifs 2025</div>
+  <div class="drawer-list" id="drawerList"></div>
+</div>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-left">
+    <div class="logo">TC</div>
+    <div>
+      <div class="hdr-title">Televic Conference France</div>
+      <div class="hdr-sub">BU Conférence Île-de-France</div>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div class="tag-year">Tarifs HT 2025–2026</div>
     <button class="mode-btn" id="modeBtn" onclick="toggleMode()">
       <span class="dot" id="dot"></span>
       <span id="modeLbl">Mode lecture</span>
@@ -246,511 +290,730 @@
   </div>
 </header>
 
+<!-- EDIT BANNER -->
 <div class="edit-banner" id="banner">
-  <span>✏️ &nbsp;MODE ÉDITION ACTIF — Modifiez les quantités, les totaux se recalculent automatiquement.</span>
+  <span>✏️ &nbsp;MODE ÉDITION — Quantités modifiables · Ajout de compléments actif · Totaux recalculés automatiquement</span>
   <button class="btn-lock" onclick="lock()">Verrouiller</button>
 </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-eyebrow">Catalogue commercial — BU Conférence Île-de-France</div>
-  <h1 class="hero-title">Bundles<br><span>Clés en Main</span></h1>
-  <p class="hero-sub">10 configurations prêtes à proposer — du poste individuel à l'auditorium. Intégrant les meilleures marques du marché.</p>
-  <div class="brand-chips">
-    <span class="chip">Televic</span><span class="chip">Lumens</span><span class="chip">Renkus-Heinz</span>
-    <span class="chip">LEA Professional</span><span class="chip">QS Tech</span><span class="chip">Arthur Holm</span>
-  </div>
-</div>
+<!-- LAYOUT -->
+<div class="layout">
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sb-head">
+      <div class="sb-label">10 configurations</div>
+      <input type="text" class="sb-search" placeholder="Filtrer…" oninput="filterSidebar(this.value)">
+    </div>
+    <div class="sb-nav" id="sbNav"></div>
+  </nav>
 
-<!-- OVERVIEW -->
-<div class="section">
-  <div class="section-label">Vue d'ensemble — 10 configurations</div>
-  <div class="ov-card">
-    <table class="ov-table">
-      <thead><tr><th>#</th><th>Configuration</th><th>Système Televic</th><th>Total HT indicatif</th></tr></thead>
-      <tbody id="ovBody"></tbody>
-    </table>
-  </div>
+  <!-- MAIN -->
+  <main class="main">
+    <div class="edit-top-pad" id="editPad"></div>
+    <div id="bundleViews"></div>
+  </main>
 </div>
-
-<!-- BUNDLES -->
-<div class="section">
-  <div class="section-label">Détail des 10 bundles</div>
-  <div class="bundles-grid" id="grid"></div>
-</div>
-
-<div class="disclaimer">
-  <div class="disclaimer-inner">
-    * Prix publics HT indicatifs. Arthur Holm et UNITE tarifés Sur Projet (SP). Quantités indicatives pour bundles 8–10, à adapter selon plan de salle.
-    Marques distribuées exclusivement par <strong>Televic Conference France</strong> — <a href="https://www.televic-conference.fr" target="_blank">www.televic-conference.fr</a>
-  </div>
-</div>
-
-<footer>
-  <strong>Televic Conference France</strong> · Solutions Conférence Île-de-France<br>
-  BU Conférence Île-de-France — 78 · 91 · 92 · 95<br>
-  <a href="https://www.televic-conference.fr" target="_blank">www.televic-conference.fr</a> · Document commercial à usage interne
-</footer>
 
 <script>
-// ─── CONFIG ───────────────────────────────
-const PIN = '2025'; // ← modifier le code ici
+// ─── CONFIG ──────────────────────────────────────
+const PIN = '2025';
 
 const URLS = {
-  televic: { url: 'https://www.televic-conference.fr', lbl: 'Televic Conference ↗' },
-  lumens:  { url: 'https://www.lumens.com.tw/en',      lbl: 'Lumens ↗' },
-  renkus:  { url: 'https://www.renkus-heinz.com',      lbl: 'Renkus-Heinz ↗' },
-  lea:     { url: 'https://www.leaprofessional.com',   lbl: 'LEA Professional ↗' },
-  qs:      { url: 'https://www.qstech.com.cn/en',      lbl: 'QS Tech ↗' },
-  arthur:  { url: 'https://www.arthurholm.com',        lbl: 'Arthur Holm ↗' },
+  televic:{url:'https://www.televic-conference.fr',lbl:'Televic Conference ↗'},
+  lumens: {url:'https://www.lumens.com.tw/en',     lbl:'Lumens ↗'},
+  renkus: {url:'https://www.renkus-heinz.com',      lbl:'Renkus-Heinz ↗'},
+  lea:    {url:'https://www.leaprofessional.com',   lbl:'LEA Professional ↗'},
+  qs:     {url:'https://www.qstech.com.cn/en',      lbl:'QS Tech ↗'},
+  arthur: {url:'https://www.arthurholm.com',        lbl:'Arthur Holm ↗'},
 };
-
-const BRAND_NAMES = { televic:'Televic', lumens:'Lumens', renkus:'Renkus-Heinz', lea:'LEA Pro', qs:'QS Tech', arthur:'Arthur Holm' };
-
-// ─── CATÉGORIES ───────────────────────────
-// conf = Conférence · video = Vidéo · sono = Sonorisation · ecran = Écran
+const BN = {televic:'Televic',lumens:'Lumens',renkus:'Renkus-Heinz',lea:'LEA Pro',qs:'QS Tech',arthur:'Arthur Holm'};
 const CAT_ORDER = ['conf','video','sono','ecran'];
-const CAT_LABELS = { conf:'🎤 Conférence', video:'📷 Vidéo', sono:'🔊 Sonorisation', ecran:'🖥 Écran' };
-const CAT_COLORS = { conf:'#2a6496', video:'#e67e22', sono:'#8e44ad', ecran:'#27ae60' };
+const CAT_LABELS = {conf:'🎤 Conférence',video:'📷 Vidéo',sono:'🔊 Sonorisation',ecran:'🖥 Écran'};
 
-// ─── DATA ─────────────────────────────────
-const BUNDLES = [
-  { id:'01', name:'Petite salle de réunion / visio', pax:'≤ 10 participants', sys:'D-CERNO Discuss',
-    desc:"Solution filaire plug & play pour réunions jusqu'à 10 participants. Microphones numériques D-CERNO, intégration visio par décodeurs OIP NDI, sonorisation colonne UBX4.",
-    sp:false,
-    items:[
-      {d:'Centrale D-CERNO AE',          b:'televic',ref:'71.98.0322',q:1,  p:1800, cat:'conf'},
-      {d:'Poste président D-CERNO C SL', b:'televic',ref:'71.98.0307',q:1,  p:365,  cat:'conf'},
-      {d:'Poste délégué D-CERNO D SL',   b:'televic',ref:'71.98.0306',q:9,  p:310,  cat:'conf'},
-      {d:'Microphone D-Mic 40 SL',       b:'televic',ref:'71.98.0054',q:10, p:165,  cat:'conf'},
-      {d:'Processeur CamConnect Pro',    b:'lumens', ref:'CamConnect Pro',q:1,p:1549,cat:'video'},
-      {d:'Décodeur OIP-N60D (NDI ↔ HDMI/USB)',b:'lumens',ref:'OIP-N60D',q:2,p:599, cat:'video'},
-      {d:'Amplificateur CS34',           b:'lea',    ref:'CS34',      q:1,  p:890,  cat:'sono'},
-      {d:'Enceinte colonne passive UBX4',b:'renkus', ref:'UBX4-BK',   q:2,  p:980,  cat:'sono'},
-      {d:'Support mural UBX4',           b:'renkus', ref:'UBRKT/CF41B',q:2, p:50,   cat:'sono'},
-      {d:'Câble réseau CAT5E FTP 5m',    b:'televic',ref:'ICC5/5',    q:10, p:30,   cat:'conf'},
-      {d:'Caméra PTZ VC-R31 (HD, 12x, PoE+)',b:'lumens',ref:'VC-R31', q:1,  p:1299, cat:'video'},
-    ],
-    specs:['D-CERNO AE : plug & play, 50 postes max, enregistrement USB','OIP-N60D : encodeur/décodeur NDI, PoE, sortie HDMI/USB','CS34 LEA : 4 × 30 W, DSP intégré, Wi-Fi, LEA Cloud','UBX4 : colonne 4 HP 3", 114 dB @1m, IP64, portée ~10 m'],
-    opt:'Vote : D-CERNO DECIDE (71.98.0362) + licence L-DECIDE (71.98.0315) par poste. Logiciel avancé : D-CERNO Advanced (71.98.0360). 📝 TranscribIA (T-IA Lim12 1an, 1 950 € HT) : transcription automatique des réunions, 12 fichiers/an inclus.'
-  },
-  { id:'02', name:'Petite salle de conseil / visio', pax:'≤ 10 participants', sys:'Confidea FLEX filaire',
-    desc:"Solution filaire modulaire sur réseau Plixus pour salle de conseil jusqu'à 10 participants. Postes Confidea FLEX encastrables ou à poser, image par OIP-N60D, sonorisation CX41 en installation fixe.",
-    sp:false,
-    items:[
-      {d:'Centrale Plixus AE-R',        b:'televic',ref:'71.98.2902',q:1,  p:3890, cat:'conf'},
-      {d:'Poste Confidea FLEX Mike',     b:'televic',ref:'71.98.0133',q:10, p:900,  cat:'conf'},
-      {d:'Microphone PLM401F',           b:'televic',ref:'71.98.0094',q:10, p:215,  cat:'conf'},
-      {d:'Processeur CamConnect Pro',   b:'lumens', ref:'CamConnect Pro',q:1,p:1549,cat:'video'},
-      {d:'Décodeur OIP-N60D',           b:'lumens', ref:'OIP-N60D',   q:2,  p:599,  cat:'video'},
-      {d:'Amplificateur CS34',          b:'lea',    ref:'CS34',       q:1,  p:890,  cat:'sono'},
-      {d:'Enceinte coaxiale CX41',      b:'renkus', ref:'CX41',       q:4,  p:295,  cat:'sono'},
-      {d:'Support mural CX41',          b:'renkus', ref:'UBRKT/CF41B',q:4,  p:50,   cat:'sono'},
-      {d:'Câble réseau CAT5E FTP 5m',   b:'televic',ref:'ICC5/5',     q:10, p:30,   cat:'conf'},
-      {d:'Caméra PTZ VC-R31 (HD, 12x, PoE+)',b:'lumens',ref:'VC-R31', q:1,  p:1299, cat:'video'},
-    ],
-    specs:['Plixus AE-R : réseau IP, 220 W inclus, enregistrement, autonome','Confidea FLEX : président/délégué configurable, écran 5,2", NFC','CX41 : coaxiale 4", 109 dB @1m, support mural inclus','CS34 LEA : 4 × 30 W — adapté à 4 enceintes 16 Ω'],
-    opt:'Vote et identification : Licence L-VT + L-ID par poste. Logiciel Confero 360 (71.98.3000) pour gestion avancée. 📝 TranscribIA (T-IA Lim12 1an, 1 950 € HT) : transcription automatique des séances, 12 fichiers/an inclus.'
-  },
-  { id:'03', name:'Salle polyvalente / visio — Mobile', pax:'20 participants', sys:'Confidea GO G4 sans fil',
-    desc:"Système sans fil G4 pour salle polyvalente ou formation jusqu'à 20 participants. Postes GO G4 rechargeables transportés en valise, déploiement en minutes. Écran LED pliable motorisé QS Tech.",
-    sp:false,
-    items:[
-      {d:"Point d'accès Confidea WAP G4",  b:'televic',ref:'71.98.0035',q:1, p:3685, cat:'conf'},
-      {d:'Adaptateur PoE+ WAP G4 PS',      b:'televic',ref:'71.98.0028',q:1, p:115,  cat:'conf'},
-      {d:'Station de charge CHT G4 (10 bat.)',b:'televic',ref:'71.98.0046',q:1,p:1415,cat:'conf'},
-      {d:'Valise transport G4 CHT10',       b:'televic',ref:'99.99.0410',q:1, p:1600, cat:'conf'},
-      {d:'Poste sans fil Confidea GO G4',   b:'televic',ref:'71.98.0082',q:20,p:1155, cat:'conf'},
-      {d:'Microphone PLM401F',              b:'televic',ref:'71.98.0094',q:20,p:215,  cat:'conf'},
-      {d:'Processeur CamConnect Pro',      b:'lumens', ref:'CamConnect Pro',q:1,p:1549,cat:'video'},
-      {d:'Décodeur OIP-N60D',              b:'lumens', ref:'OIP-N60D',  q:3, p:599,  cat:'video'},
-      {d:'Amplificateur CS352',            b:'lea',    ref:'CS352',     q:1, p:1410, cat:'sono'},
-      {d:'Enceinte colonne passive UBX8',  b:'renkus', ref:'UBX8-BK',   q:2, p:1350, cat:'sono'},
-      {d:'Écran LED mobile 138" XWALL Plus',b:'qs',   ref:'XW13815-M', q:1, p:31900,cat:'ecran'},
-      {d:'Caméra PTZ VC-TR40 (suivi auto, 20x, PoE+)',b:'lumens',ref:'VC-TR40',q:1,p:1699,cat:'video'},
-    ],
-    specs:['Confidea GO G4 : WiFi5, batterie 12h, NFC, déploiement en 5 min','CHT G4 + valise CHT10 : charge et transport, 10 batteries en 2h','CS352 LEA : 2 × 350 W, Smart Bridge 700 W, DSP 96 kHz','XWALL Plus 138" : LED pliable motorisé GOB, Android 9, ~160 nits'],
-    opt:'Licences L-VT / L-ID / L-DU. WAP G4 avec Dante (+475 €). Support mobile écran XWST90 (+1 380 €). 📝 TranscribIA (T-IA Ill-Res 1an, 3 800 € HT) : transcription illimitée des sessions.'
-  },
-  { id:'04', name:'Salle polyvalente de conseil / visio', pax:'20 participants', sys:'Confidea FLEX G4 sans fil',
-    desc:"Système sans fil G4 haut de gamme pour salle polyvalente jusqu'à 20 participants. Postes Confidea FLEX G4 avec écran tactile et NFC, enceintes CX61 pour acoustique naturelle, écran LED mobile pliable.",
-    sp:false,
-    items:[
-      {d:"Point d'accès Confidea WAP G4",  b:'televic',ref:'71.98.0035',q:1, p:3685, cat:'conf'},
-      {d:'Adaptateur PoE+ WAP G4 PS',      b:'televic',ref:'71.98.0028',q:1, p:115,  cat:'conf'},
-      {d:'Station de charge CHT G4',       b:'televic',ref:'71.98.0046',q:1, p:1415, cat:'conf'},
-      {d:'Valise transport G4 CHT10',      b:'televic',ref:'99.99.0410',q:1, p:1600, cat:'conf'},
-      {d:'Poste sans fil Confidea FLEX G4',b:'televic',ref:'71.98.0081',q:20,p:1440, cat:'conf'},
-      {d:'Microphone PLM401F',             b:'televic',ref:'71.98.0094',q:20,p:215,  cat:'conf'},
-      {d:'Processeur CamConnect Pro',     b:'lumens', ref:'CamConnect Pro',q:1,p:1549,cat:'video'},
-      {d:'Décodeur OIP-N60D',             b:'lumens', ref:'OIP-N60D',   q:2, p:599,  cat:'video'},
-      {d:'Amplificateur CS352',           b:'lea',    ref:'CS352',      q:1, p:1410, cat:'sono'},
-      {d:'Enceinte coaxiale CX61',        b:'renkus', ref:'CX61',       q:4, p:655,  cat:'sono'},
-      {d:'Support mural CX61',            b:'renkus', ref:'UBRKT/CT61B',q:4, p:80,   cat:'sono'},
-      {d:'Écran LED mobile 138" XWALL Plus',b:'qs',  ref:'XW13815-M',  q:1, p:31900,cat:'ecran'},
-      {d:'Caméra PTZ VC-TR40 (suivi auto, 20x, PoE+)',b:'lumens',ref:'VC-TR40',q:1,p:1699,cat:'video'},
-    ],
-    specs:['Confidea FLEX G4 : tactile 5,2", NFC, double batterie hot-swap','CX61 : 6,5" coaxiale, 120 dB @1m — rendu naturel ≤ 80 m²','CS352 : 2 × 350 W, Smart Bridge 700 W, monitoring temps réel','XWALL Plus 138" : 1920×1080, pitch 1,5 mm GOB, Android 9'],
-    opt:'Licences L-VT / L-ID / L-DU. WAP G4 Dante (+475 €). 2ème CHT G4 si rotation batteries longue journée. 📝 TranscribIA (T-IA Ill-Res 1an, 3 800 € HT) : transcription illimitée des séances de conseil.'
-  },
-  { id:'05', name:'Salle de conseil / visio — Filaire', pax:'20 participants', sys:'Confidea FLEX Plixus',
-    desc:"Solution filaire Plixus AE-R avec postes Confidea FLEX pour salle de conseil jusqu'à 20 participants. Audio hybride colonnes UBX8 + enceintes CX61, suivi caméra Camera Control, affichage LED PURE fixe.",
-    sp:false,
-    items:[
-      {d:'Centrale Plixus AE-R',          b:'televic',ref:'71.98.2902',    q:1, p:3890, cat:'conf'},
-      {d:'Poste Confidea FLEX Mike',       b:'televic',ref:'71.98.0133',    q:20,p:900,  cat:'conf'},
-      {d:'Microphone PLM401F',             b:'televic',ref:'71.98.0094',    q:20,p:215,  cat:'conf'},
-      {d:'Logiciel Camera Control',        b:'televic',ref:'99.99.0020',    q:1, p:2900, cat:'video'},
-      {d:'Décodeur OIP-N60D',             b:'lumens', ref:'OIP-N60D',       q:3, p:599,  cat:'video'},
-      {d:'Amplificateur CS352',           b:'lea',    ref:'CS352',          q:1, p:1410, cat:'sono'},
-      {d:'Enceinte colonne passive UBX8', b:'renkus', ref:'UBX8-BK',        q:2, p:1350, cat:'sono'},
-      {d:'Enceinte coaxiale CX61',        b:'renkus', ref:'CX61',           q:2, p:655,  cat:'sono'},
-      {d:'Support mural CX61',            b:'renkus', ref:'UBRKT/CT61B',    q:2, p:80,   cat:'sono'},
-      {d:'Écran LED PURE 135" XWALL Pure',b:'qs',    ref:'XW13515-PURESMD', q:1, p:23500,cat:'ecran'},
-      {d:'Caméra PTZ VC-TR40 (suivi auto, 20x, PoE+)',b:'lumens',ref:'VC-TR40',q:1,p:1699,cat:'video'},
-    ],
-    specs:['Plixus AE-R : réseau IP, alimentation 220 W incluse, enregistrement','Camera Control : suivi jusqu\'à 8 caméras PTZ, sync Cocon','Audio hybride UBX8 + CX61 : couverture longue + dispersion large','XWALL PURE 135" : pitch 1,5 mm SMD, Full HD, support mural inclus'],
-    opt:'Licences L-VT / L-ID. Confero 360 (71.98.3000). Plixus AE-R Dante si intégration audio réseau (71.98.2904). 📝 TranscribIA (T-IA Ill-Res 1an, 3 800 € HT) : transcription automatique illimitée des séances.'
-  },
-  { id:'06', name:'Boardroom — uniCOS Core T', pax:'12 participants', sys:'Plixus AE-R + uniCOS Core T',
-    desc:"Salle de direction avec postes uniCOS Core T à écran tactile 10\". Affichage multiflux vidéo par poste, réseau Plixus AE-R, Camera Control Televic pour suivi des intervenants, LED PURE en fond de salle.",
-    sp:false,
-    items:[
-      {d:'Centrale Plixus AE-R',            b:'televic',ref:'71.98.2902',    q:1, p:3890, cat:'conf'},
-      {d:'Poste uniCOS Core T (10" tactile)',b:'televic',ref:'71.98.2015',    q:12,p:2420, cat:'conf'},
-      {d:'Microphone PLM401F',               b:'televic',ref:'71.98.0094',    q:12,p:215,  cat:'conf'},
-      {d:'Logiciel Camera Control',          b:'televic',ref:'99.99.0020',    q:1, p:2900, cat:'video'},
-      {d:'Décodeur OIP-N60D',               b:'lumens', ref:'OIP-N60D',       q:3, p:599,  cat:'video'},
-      {d:'Amplificateur CS352',             b:'lea',    ref:'CS352',          q:1, p:1410, cat:'sono'},
-      {d:'Enceinte colonne passive UBX8',   b:'renkus', ref:'UBX8-BK',        q:2, p:1350, cat:'sono'},
-      {d:'Enceinte coaxiale CX61',          b:'renkus', ref:'CX61',           q:2, p:655,  cat:'sono'},
-      {d:'Support mural CX61',              b:'renkus', ref:'UBRKT/CT61B',    q:2, p:80,   cat:'sono'},
-      {d:'Écran LED PURE 135" XWALL Pure',  b:'qs',    ref:'XW13515-PURESMD', q:1, p:23500,cat:'ecran'},
-      {d:'Caméra PTZ VC-TR60A (suivi auto 4K, 12x, PoE+)',b:'lumens',ref:'VC-TR60A',q:2,p:2199,cat:'video'},
-    ],
-    specs:['uniCOS Core T : tactile 10", 6 flux vidéo, caméra 5MP, USB charge','Compatible Confero (pas CoCon) — logiciel salle inclus AE-R','Camera Control : jusqu\'à 8 caméras PTZ, incrustation noms','XWALL PURE 135" : multi-source HDMI, support mural inclus'],
-    opt:'Plixus V-IN/V-OUT (71.98.2921/2922) pour distribution vidéo Plixus. Plaques nominatives NP1. Licence Confero 360. 📝 TranscribIA (T-IA Ill-Res 1an, 3 800 € HT) : transcription automatique illimitée des séances de direction.'
-  },
-  { id:'07', name:'Boardroom — Arthur Holm DB2 / DB3 Talk', pax:'12 participants', sys:'Plixus AE-R + AH Talk',
-    desc:"Salle de direction prestige avec moniteurs rétractables Arthur Holm intégrant l'élévateur de microphone. Réseau Plixus AE-R, microphones PLM401F sur élévateur Talk, Camera Control, LED PURE.",
-    sp:true, spLbl:'Arthur Holm',
-    items:[
-      {d:'Centrale Plixus AE-R',                           b:'televic',ref:'71.98.2902',    q:1, p:3890,  sp:false, cat:'conf'},
-      {d:'Moniteur rétractable DB2/DB3 Talk (17" ou 22")', b:'arthur', ref:'AH17DB3Talk',   q:12,p:0,     sp:true,  cat:'conf'},
-      {d:'Microphone PLM401F',                              b:'televic',ref:'71.98.0094',    q:12,p:215,   sp:false, cat:'conf'},
-      {d:'Logiciel Camera Control',                         b:'televic',ref:'99.99.0020',    q:1, p:2900,  sp:false, cat:'video'},
-      {d:'Décodeur OIP-N60D',                              b:'lumens', ref:'OIP-N60D',       q:3, p:599,   sp:false, cat:'video'},
-      {d:'Amplificateur CS352',                            b:'lea',    ref:'CS352',          q:1, p:1410,  sp:false, cat:'sono'},
-      {d:'Enceinte colonne passive UBX8',                  b:'renkus', ref:'UBX8-BK',        q:2, p:1350,  sp:false, cat:'sono'},
-      {d:'Enceinte coaxiale CX61',                         b:'renkus', ref:'CX61',           q:2, p:655,   sp:false, cat:'sono'},
-      {d:'Support mural CX61',                             b:'renkus', ref:'UBRKT/CT61B',    q:2, p:80,    sp:false, cat:'sono'},
-      {d:'Écran LED PURE 135" XWALL Pure',                 b:'qs',    ref:'XW13515-PURESMD', q:1, p:23500, sp:false, cat:'ecran'},
-      {d:'Caméra PTZ VC-TR60A (suivi auto 4K, 12x, PoE+)',b:'lumens',ref:'VC-TR60A',         q:2, p:2199,  sp:false, cat:'video'},
-    ],
-    specs:['DB2/DB3 Talk : élévateur micro indépendant, inclinaison 90°→20°, AHlink','PLM401F sur élévateur : 40 cm push & lock, anti-GSM','⚠ Compatibilité 2EMM + Talk à confirmer avant commande','XWALL PURE 135" : dalle LED fixe, pitch 1,5 mm, Full HD prestige'],
-    opt:'Écran tactile TS17/TS22 (+800–900 €/u, SP). Caméra DCAMUSBDB3 (+650 €/u, SP). Câble USB-C rétractable AHDCRUSBCI (+900 €/u). 📝 TranscribIA (T-IA Ill-Res 1an, 3 800 € HT) : transcription automatique illimitée des séances de direction.'
-  },
-  { id:'08', name:'Salle de conseil (grande capacité)', pax:'~30 participants', sys:'Confidea F/FLEX + CoCon',
-    desc:"Grande salle de conseil avec postes Confidea F encastrés au 1er rang et Confidea FLEX aux autres rangs. CoCon Discussion pour gestion avancée, Camera Control, colonnes UBX16, LED PURE.",
-    sp:false,
-    items:[
-      {d:'Centrale Plixus AE-R',                   b:'televic',ref:'71.98.2902',    q:1, p:3890, cat:'conf'},
-      {d:'Extenseur Plixus NEXT',                   b:'televic',ref:'71.98.2911',    q:1, p:1405, cat:'conf'},
-      {d:'Poste encastré président F-CD Mike',      b:'televic',ref:'71.98.0541',    q:1, p:720,  cat:'conf'},
-      {d:'Poste encastré délégué F-DD Mike',        b:'televic',ref:'71.98.0531',    q:5, p:665,  cat:'conf'},
-      {d:'Poste Confidea FLEX Mike (autres rangs)', b:'televic',ref:'71.98.0133',    q:24,p:900,  cat:'conf'},
-      {d:'Microphone PLM401F',                      b:'televic',ref:'71.98.0094',    q:30,p:215,  cat:'conf'},
-      {d:'Logiciel CoCon Discussion',               b:'televic',ref:'71.98.1101',    q:1, p:4180, cat:'conf'},
-      {d:'Logiciel Camera Control',                 b:'televic',ref:'99.99.0020',    q:1, p:2900, cat:'video'},
-      {d:'Décodeur OIP-N60D',                      b:'lumens', ref:'OIP-N60D',       q:4, p:599,  cat:'video'},
-      {d:'Amplificateur CS702',                    b:'lea',    ref:'CS702',          q:1, p:2010, cat:'sono'},
-      {d:'Enceinte colonne passive UBX16',         b:'renkus', ref:'UBX16-BK',       q:2, p:2330, cat:'sono'},
-      {d:'Écran LED PURE 135" XWALL Pure',         b:'qs',    ref:'XW13515-PURESMD', q:1, p:23500,cat:'ecran'},
-      {d:'Caméra PTZ VC-TR60A (suivi auto 4K, 12x, PoE+)',b:'lumens',ref:'VC-TR60A',q:2,p:2199,cat:'video'},
-    ],
-    specs:['Plixus NEXT : extension ports >32 postes, redondance réseau','Confidea F-DD / F-CD : encastré tout-en-un avec HP intégré','CoCon Discussion : gestion réunion, API tiers, synoptique opérateur','UBX16 : 16 HP 3", 124 dB @1m, portée ~40 m — CS702 2×700W'],
-    opt:'CoCon Voting + Authentication (+3 445 € + 1 970 €). CoCon Signage (2 030 €/écran). Plixus 8 Channel pour enregistrement multicanal. 📝 TranscribIA (T-IA Ill-Res 1an, 3 800 € HT) : transcription automatique illimitée — idéal pour PV de séance.'
-  },
-  { id:'09', name:'Hémicycle — Interprétation infrarouge', pax:'~56 participants', sys:'uniCOS Pro + Lingua IR',
-    desc:"Configuration hémicycle avec podium uniCOS Pro T, premier rang Confidea F encastré, autres rangs Confidea FLEX, cabines d'interprétation Lingua ID et distribution infrarouge Lingua IR. CoCon Discussion et Camera Control.",
-    sp:false,
-    items:[
-      {d:'Centrale Plixus AE-R',                     b:'televic',ref:'71.98.2902',    q:1, p:3890, cat:'conf'},
-      {d:'Extenseur Plixus NEXT',                    b:'televic',ref:'71.98.2911',    q:2, p:1405, cat:'conf'},
-      {d:'Poste podium uniCOS Pro T (10" tactile)',  b:'televic',ref:'71.98.2005',    q:4, p:3530, cat:'conf'},
-      {d:'Poste encastré président F-CD Mike',       b:'televic',ref:'71.98.0541',    q:1, p:720,  cat:'conf'},
-      {d:'Poste encastré délégué F-DD Mike',         b:'televic',ref:'71.98.0531',    q:11,p:665,  cat:'conf'},
-      {d:'Poste Confidea FLEX Mike (autres rangs)',   b:'televic',ref:'71.98.0133',    q:30,p:900,  cat:'conf'},
-      {d:'Microphone PLM401F (ensemble)',             b:'televic',ref:'71.98.0094',    q:46,p:215,  cat:'conf'},
-      {d:'Pupitre interprète Lingua ID Mike',        b:'televic',ref:'71.98.2103',    q:2, p:2400, cat:'conf'},
-      {d:'Transmetteur infrarouge Lingua T (6 can.)',b:'televic',ref:'71.98.0215',    q:1, p:4050, cat:'conf'},
-      {d:'Diffuseur infrarouge Lingua RAD_H (25W)', b:'televic',ref:'71.98.0220',    q:2, p:4050, cat:'conf'},
-      {d:'Récepteur infrarouge Lingua R (40 can.)',  b:'televic',ref:'71.98.0208',    q:30,p:280,  cat:'conf'},
-      {d:'Logiciel CoCon Discussion',                b:'televic',ref:'71.98.1101',    q:1, p:4180, cat:'conf'},
-      {d:'Logiciel Camera Control',                  b:'televic',ref:'99.99.0020',    q:1, p:2900, cat:'video'},
-      {d:'Décodeur OIP-N60D',                       b:'lumens', ref:'OIP-N60D',       q:4, p:599,  cat:'video'},
-      {d:'Amplificateur CS702',                     b:'lea',    ref:'CS702',          q:1, p:2010, cat:'sono'},
-      {d:'Enceinte colonne passive UBX16',          b:'renkus', ref:'UBX16-BK',       q:2, p:2330, cat:'sono'},
-      {d:'Écran LED PURE 135" XWALL Pure',          b:'qs',    ref:'XW13515-PURESMD', q:1, p:23500,cat:'ecran'},
-      {d:'Caméra PTZ VC-A71P (4K, 30x, NDI, PoE++)',b:'lumens',ref:'VC-A71P',         q:2, p:3099, cat:'video'},
-    ],
-    specs:['uniCOS Pro T : tactile 10" rabattable, caméra 5MP, RFID, USB charge','Lingua T + RAD_H : IR numérique 40 canaux, 25W, délai auto','Lingua ID Mike : jusqu\'à 11 langues sans logiciel additionnel','2× Plixus NEXT : capacité >64 postes, redondance réseau assurée'],
-    opt:'Canaux IR suppl. : Lingua L12 (+1 355 €) ou L40 (+4 475 €). CoCon Interpretation pour langues avancées. Valise charge 64 récepteurs (71.98.0235, 3 525 €). 📝 TranscribIA (T-IA Ill-Res 1an, 3 800 € HT) : transcription multilingue illimitée des sessions plénières.'
-  },
-  { id:'10', name:'Auditorium — Interprétation UNITE', pax:'~56 participants', sys:'uniCOS Pro + UNITE',
-    desc:"Configuration auditorium avec podium uniCOS Pro T, rangs mixtes Confidea F/FLEX, cabines d'interprétation Lingua ID et distribution simultanée sans fil par UNITE. CoCon Discussion, Camera Control et LED PURE.",
-    sp:true, spLbl:'UNITE',
-    items:[
-      {d:'Centrale Plixus AE-R',                    b:'televic',ref:'71.98.2902',    q:1, p:3890,  sp:false, cat:'conf'},
-      {d:'Extenseur Plixus NEXT',                   b:'televic',ref:'71.98.2911',    q:2, p:1405,  sp:false, cat:'conf'},
-      {d:'Poste podium uniCOS Pro T (10" tactile)', b:'televic',ref:'71.98.2005',    q:4, p:3530,  sp:false, cat:'conf'},
-      {d:'Poste encastré président F-CD Mike',      b:'televic',ref:'71.98.0541',    q:1, p:720,   sp:false, cat:'conf'},
-      {d:'Poste encastré délégué F-DD Mike',        b:'televic',ref:'71.98.0531',    q:11,p:665,   sp:false, cat:'conf'},
-      {d:'Poste Confidea FLEX Mike (autres rangs)',  b:'televic',ref:'71.98.0133',    q:30,p:900,   sp:false, cat:'conf'},
-      {d:'Microphone PLM401F (ensemble)',            b:'televic',ref:'71.98.0094',    q:46,p:215,   sp:false, cat:'conf'},
-      {d:'Pupitre interprète Lingua ID Mike',       b:'televic',ref:'71.98.2103',    q:2, p:2400,  sp:false, cat:'conf'},
-      {d:'Système UNITE (transmetteur + récepteurs)',b:'televic',ref:'UNITE',         q:1, p:0,     sp:true,  cat:'conf'},
-      {d:'Logiciel CoCon Discussion',               b:'televic',ref:'71.98.1101',    q:1, p:4180,  sp:false, cat:'conf'},
-      {d:'Logiciel Camera Control',                 b:'televic',ref:'99.99.0020',    q:1, p:2900,  sp:false, cat:'video'},
-      {d:'Décodeur OIP-N60D',                      b:'lumens', ref:'OIP-N60D',       q:4, p:599,   sp:false, cat:'video'},
-      {d:'Amplificateur CS702',                    b:'lea',    ref:'CS702',          q:1, p:2010,  sp:false, cat:'sono'},
-      {d:'Enceinte colonne passive UBX16',         b:'renkus', ref:'UBX16-BK',       q:2, p:2330,  sp:false, cat:'sono'},
-      {d:'Écran LED PURE 135" XWALL Pure',         b:'qs',    ref:'XW13515-PURESMD', q:1, p:23500, sp:false, cat:'ecran'},
-      {d:'Caméra PTZ VC-A71P (4K, 30x, NDI, PoE++)',b:'lumens',ref:'VC-A71P',        q:2, p:3099,  sp:false, cat:'video'},
-    ],
-    specs:['UNITE : distribution multilingue sans fil RF — alternative IR plus discrète','uniCOS Pro T : tactile 10" rabattable, caméra 5MP, RFID, USB charge','Lingua ID Mike : jusqu\'à 11 langues sans logiciel additionnel','CS702 + 2× UBX16 : couverture longue portée auditorium, 2 × 700 W'],
-    opt:'CoCon Voting + Authentication (+5 415 €). CoCon Interpretation si >11 langues. uniCOS Pro F encastré en remplacement du Pro T (+475 €/u). 📝 TranscribIA (T-IA Ill-Res 1an, 3 800 € HT) : transcription multilingue illimitée des sessions plénières et des débats.'
-  }
+// ─── CATALOGUE COMPLÉMENTS ───────────────────────
+// tags: quels bundles affichent ce complément
+const EXTRAS_CATALOG = [
+  // ── LICENCES PAR POSTE ──
+  {id:'e01',d:'Licence Vote L-VT (par poste)',         ref:'71.98.1401',b:'televic',p:60,  cat:'conf', tags:['plixus','confidea']},
+  {id:'e02',d:'Licence Identification L-ID (par poste)',ref:'71.98.1402',b:'televic',p:60,  cat:'conf', tags:['plixus','confidea']},
+  {id:'e03',d:'Licence Dual User L-DU (par poste)',    ref:'71.98.1404',b:'televic',p:60,  cat:'conf', tags:['plixus','g4']},
+  // ── LOGICIELS CONFÉRENCE ──
+  {id:'e04',d:'Logiciel Confero 360',                  ref:'71.98.3000',b:'televic',p:2900, cat:'conf', tags:['plixus']},
+  {id:'e05',d:'Logiciel CoCon Discussion',             ref:'71.98.1101',b:'televic',p:4180, cat:'conf', tags:['plixus']},
+  {id:'e06',d:'CoCon Voting',                          ref:'71.98.1102',b:'televic',p:3445, cat:'conf', tags:['cocon','plixus']},
+  {id:'e07',d:'CoCon Authentication',                  ref:'71.98.1103',b:'televic',p:1970, cat:'conf', tags:['cocon','plixus']},
+  {id:'e08',d:'CoCon Signage (par écran)',             ref:'71.98.1104',b:'televic',p:2030, cat:'conf', tags:['cocon','plixus']},
+  {id:'e09',d:'CoCon Interpretation',                  ref:'71.98.1105',b:'televic',p:0,   sp:true,cat:'conf', tags:['cocon','lingua']},
+  {id:'e10',d:'Logiciel Camera Control',               ref:'99.99.0020',b:'televic',p:2900, cat:'video',tags:['plixus']},
+  // ── D-CERNO OPTIONS ──
+  {id:'e11',d:'Poste D-CERNO DECIDE (vote)',           ref:'71.98.0362',b:'televic',p:420,  cat:'conf', tags:['dcerno']},
+  {id:'e12',d:'Licence L-DECIDE (par poste)',          ref:'71.98.0315',b:'televic',p:65,   cat:'conf', tags:['dcerno']},
+  {id:'e13',d:'D-CERNO Advanced (logiciel)',           ref:'71.98.0360',b:'televic',p:0,   sp:true,cat:'conf', tags:['dcerno']},
+  // ── PLIXUS HARDWARE ──
+  {id:'e14',d:'Extenseur de ports Plixus NEXT',        ref:'71.98.2911',b:'televic',p:1405, cat:'conf', tags:['plixus']},
+  {id:'e15',d:'Plixus V-IN (entrée vidéo Plixus)',    ref:'71.98.2921',b:'televic',p:0,   sp:true,cat:'conf', tags:['plixus','unicos']},
+  {id:'e16',d:'Plixus V-OUT (sortie vidéo Plixus)',   ref:'71.98.2922',b:'televic',p:0,   sp:true,cat:'conf', tags:['plixus','unicos']},
+  {id:'e17',d:'Plaque nominative NP1 (par poste)',     ref:'71.98.2050',b:'televic',p:95,   cat:'conf', tags:['unicos']},
+  // ── G4 SANS FIL ──
+  {id:'e18',d:'WAP G4 avec Dante (vs sans Dante)',     ref:'71.98.0034',b:'televic',p:4160, cat:'conf', tags:['g4']},
+  {id:'e19',d:'Station de charge CHT G4 supplémentaire',ref:'71.98.0046',b:'televic',p:1415,cat:'conf', tags:['g4']},
+  {id:'e20',d:'Valise transport G4 CHT10 supplémentaire',ref:'99.99.0410',b:'televic',p:1600,cat:'conf',tags:['g4']},
+  // ── LUMENS / VIDÉO ──
+  {id:'e21',d:'Décodeur OIP-N60D supplémentaire',      ref:'OIP-N60D',  b:'lumens', p:599,  cat:'video',tags:['lumens']},
+  {id:'e22',d:'Processeur CamConnect supplémentaire',  ref:'CamConnect',b:'lumens', p:1549, cat:'video',tags:['lumens']},
+  // ── TRANSCRIBIA ──
+  {id:'e23',d:'TranscribIA — 12 fichiers / 1 an',      ref:'T-IA Lim12 1an',b:'televic',p:1950,cat:'conf',tags:['all']},
+  {id:'e24',d:'TranscribIA — Illimitée / 1 an',        ref:'T-IA Ill-Res 1an',b:'televic',p:3800,cat:'conf',tags:['all']},
+  // ── RENKUS ACCESSOIRES ──
+  {id:'e25',d:'Caisson de grave CX112-S (option UBX8)',ref:'CX112-S',  b:'renkus', p:0,   sp:true,cat:'sono',tags:['renkus']},
+  {id:'e26',d:'Caisson de grave CX118 (option UBX16)', ref:'CX118',    b:'renkus', p:0,   sp:true,cat:'sono',tags:['renkus']},
+  // ── LEA ACCESSOIRES ──
+  {id:'e27',d:'Option Dante ampli LEA (upgrade)',       ref:'CS Dante', b:'lea',    p:0,   sp:true,cat:'sono',tags:['lea']},
+  {id:'e28',d:'Panneau de commande mural CS Touch',     ref:'CS TOUCH', b:'lea',    p:760,  cat:'sono',tags:['lea']},
+  // ── CONTRATS DE SERVICE ──
+  {id:'e29',d:'Contrat de service Bronze (1 an)',       ref:'CS-BRONZE',b:'televic',p:0,   sp:true,cat:'service',tags:['all']},
+  {id:'e30',d:'Contrat de service Silver (1 an)',       ref:'CS-SILVER',b:'televic',p:0,   sp:true,cat:'service',tags:['all']},
+  {id:'e31',d:'Contrat de service Gold (1 an)',         ref:'CS-GOLD',  b:'televic',p:0,   sp:true,cat:'service',tags:['all']},
 ];
 
-// ─── HELPERS ──────────────────────────────
-function fmt(n){return n.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';}
-function bundleTotal(b){return b.items.reduce((s,it)=>s+(it.sp?0:it.q*it.p),0);}
-function catTotal(b,cat){return b.items.filter(it=>it.cat===cat&&!it.sp).reduce((s,it)=>s+it.q*it.p,0);}
+// ─── BUNDLES DATA ────────────────────────────────
+const BUNDLES = [
+  {id:'01',name:'Petite salle de réunion / visio',pax:'≤ 10 participants',sys:'D-CERNO Discuss',
+   tags:['dcerno','lumens','lea','renkus','all'],
+   desc:"Solution filaire plug & play pour réunions jusqu'à 10 participants. Microphones numériques D-CERNO, intégration visio par décodeurs OIP NDI, sonorisation colonne UBX4.",
+   sp:false,
+   items:[
+    {d:'Centrale D-CERNO AE',              b:'televic',ref:'71.98.0322',q:1, p:1800, cat:'conf'},
+    {d:'Poste président D-CERNO C SL',     b:'televic',ref:'71.98.0307',q:1, p:365,  cat:'conf'},
+    {d:'Poste délégué D-CERNO D SL',       b:'televic',ref:'71.98.0306',q:9, p:310,  cat:'conf'},
+    {d:'Microphone D-Mic 40 SL',           b:'televic',ref:'71.98.0054',q:10,p:165,  cat:'conf'},
+    {d:'Câble réseau CAT5E FTP 5m',        b:'televic',ref:'ICC5/5',    q:10,p:30,   cat:'conf'},
+    {d:'Caméra PTZ VC-R31 (HD, 12x, PoE+)',b:'lumens', ref:'VC-R31',   q:1, p:1299, cat:'video'},
+    {d:'Processeur CamConnect Pro',        b:'lumens', ref:'CamConnect Pro',q:1,p:1549,cat:'video'},
+    {d:'Décodeur OIP-N60D (NDI↔HDMI/USB)',b:'lumens', ref:'OIP-N60D',  q:2, p:599,  cat:'video'},
+    {d:'Amplificateur CS34',               b:'lea',    ref:'CS34',      q:1, p:890,  cat:'sono'},
+    {d:'Enceinte colonne passive UBX4',    b:'renkus', ref:'UBX4-BK',   q:2, p:980,  cat:'sono'},
+    {d:'Support mural UBX4',               b:'renkus', ref:'UBRKT/CF41B',q:2,p:50,  cat:'sono'},
+   ],
+   specs:['D-CERNO AE : plug & play, 50 postes max, enreg. USB','OIP-N60D : encodeur/décodeur NDI, PoE, HDMI/USB','CS34 LEA : 4×30W, DSP intégré, Wi-Fi, LEA Cloud','UBX4 : 4 HP 3", 114 dB @1m, IP64, portée ~10m'],
+   opt:'Vote : D-CERNO DECIDE (71.98.0362) + L-DECIDE (71.98.0315) par poste. D-CERNO Advanced (71.98.0360). 📝 TranscribIA Lim12 1an (1 950 €) : transcription 12 fichiers/an.'},
 
-// ─── RENDER OVERVIEW ──────────────────────
-function renderOv(){
-  const tb=document.getElementById('ovBody');
-  tb.innerHTML='';
+  {id:'02',name:'Petite salle de conseil / visio',pax:'≤ 10 participants',sys:'Confidea FLEX filaire',
+   tags:['plixus','confidea','lumens','lea','renkus','all'],
+   desc:"Solution filaire modulaire sur réseau Plixus pour salle de conseil. Postes Confidea FLEX encastrables ou à poser, image par OIP-N60D, sonorisation CX41 fixe.",
+   sp:false,
+   items:[
+    {d:'Centrale Plixus AE-R',             b:'televic',ref:'71.98.2902',q:1, p:3890, cat:'conf'},
+    {d:'Poste Confidea FLEX Mike',         b:'televic',ref:'71.98.0133',q:10,p:900,  cat:'conf'},
+    {d:'Microphone PLM401F',               b:'televic',ref:'71.98.0094',q:10,p:215,  cat:'conf'},
+    {d:'Câble réseau CAT5E FTP 5m',        b:'televic',ref:'ICC5/5',    q:10,p:30,   cat:'conf'},
+    {d:'Caméra PTZ VC-R31 (HD, 12x, PoE+)',b:'lumens', ref:'VC-R31',   q:1, p:1299, cat:'video'},
+    {d:'Processeur CamConnect Pro',        b:'lumens', ref:'CamConnect Pro',q:1,p:1549,cat:'video'},
+    {d:'Décodeur OIP-N60D',               b:'lumens', ref:'OIP-N60D',  q:2, p:599,  cat:'video'},
+    {d:'Amplificateur CS34',               b:'lea',    ref:'CS34',      q:1, p:890,  cat:'sono'},
+    {d:'Enceinte coaxiale CX41',           b:'renkus', ref:'CX41',      q:4, p:295,  cat:'sono'},
+    {d:'Support mural CX41',               b:'renkus', ref:'UBRKT/CF41B',q:4,p:50,  cat:'sono'},
+   ],
+   specs:['Plixus AE-R : réseau IP, 220W inclus, enregistrement','Confidea FLEX : prés/délégué config., écran 5,2", NFC','CX41 : coaxiale 4", 109 dB @1m, support mural inclus','CS34 : 4×30W — adapté 4 enceintes 16Ω en petite salle'],
+   opt:'Vote/identification : L-VT + L-ID par poste. Confero 360 (71.98.3000). 📝 TranscribIA Lim12 1an (1 950 €) : transcription 12 fichiers/an.'},
+
+  {id:'03',name:'Salle polyvalente / visio — Mobile',pax:'20 participants',sys:'Confidea GO G4 sans fil',
+   tags:['plixus','confidea','g4','lumens','lea','renkus','all'],
+   desc:"Système sans fil G4 pour salle polyvalente ou formation jusqu'à 20 participants. Postes GO G4 rechargeables en valise, déploiement en minutes. Écran LED pliable motorisé QS Tech.",
+   sp:false,
+   items:[
+    {d:"Point d'accès Confidea WAP G4",    b:'televic',ref:'71.98.0035',q:1, p:3685, cat:'conf'},
+    {d:'Adaptateur PoE+ WAP G4 PS',        b:'televic',ref:'71.98.0028',q:1, p:115,  cat:'conf'},
+    {d:'Station de charge CHT G4 (10 bat)',b:'televic',ref:'71.98.0046',q:1, p:1415, cat:'conf'},
+    {d:'Valise transport G4 CHT10',        b:'televic',ref:'99.99.0410',q:1, p:1600, cat:'conf'},
+    {d:'Poste sans fil Confidea GO G4',    b:'televic',ref:'71.98.0082',q:20,p:1155, cat:'conf'},
+    {d:'Microphone PLM401F',               b:'televic',ref:'71.98.0094',q:20,p:215,  cat:'conf'},
+    {d:'Caméra PTZ VC-TR40 (suivi auto, 20x)',b:'lumens',ref:'VC-TR40', q:1, p:1699, cat:'video'},
+    {d:'Processeur CamConnect Pro',        b:'lumens', ref:'CamConnect Pro',q:1,p:1549,cat:'video'},
+    {d:'Décodeur OIP-N60D',               b:'lumens', ref:'OIP-N60D',  q:3, p:599,  cat:'video'},
+    {d:'Amplificateur CS352',              b:'lea',    ref:'CS352',     q:1, p:1410, cat:'sono'},
+    {d:'Enceinte colonne passive UBX8',    b:'renkus', ref:'UBX8-BK',   q:2, p:1350, cat:'sono'},
+    {d:'Écran LED mobile 138" XWALL Plus', b:'qs',     ref:'XW13815-M', q:1, p:31900,cat:'ecran'},
+   ],
+   specs:['GO G4 : WiFi5, batterie 12h, NFC, déploiement 5 min','CHT G4 + valise CHT10 : charge+transport, 10 bat en 2h','CS352 LEA : 2×350W, Smart Bridge 700W, DSP 96kHz','XWALL Plus 138" : LED pliable motorisé GOB, Android 9'],
+   opt:'Licences L-VT/L-ID/L-DU. WAP G4 Dante (+475€). Support mobile XWST90 (+1 380€). 📝 TranscribIA Ill-Res 1an (3 800 €).'},
+
+  {id:'04',name:'Salle polyvalente de conseil / visio',pax:'20 participants',sys:'Confidea FLEX G4 sans fil',
+   tags:['plixus','confidea','g4','lumens','lea','renkus','all'],
+   desc:"Système sans fil G4 haut de gamme pour salle polyvalente. Postes Confidea FLEX G4 écran tactile + NFC, enceintes CX61 pour acoustique naturelle, écran LED mobile pliable.",
+   sp:false,
+   items:[
+    {d:"Point d'accès Confidea WAP G4",    b:'televic',ref:'71.98.0035',q:1, p:3685, cat:'conf'},
+    {d:'Adaptateur PoE+ WAP G4 PS',        b:'televic',ref:'71.98.0028',q:1, p:115,  cat:'conf'},
+    {d:'Station de charge CHT G4',         b:'televic',ref:'71.98.0046',q:1, p:1415, cat:'conf'},
+    {d:'Valise transport G4 CHT10',        b:'televic',ref:'99.99.0410',q:1, p:1600, cat:'conf'},
+    {d:'Poste sans fil Confidea FLEX G4',  b:'televic',ref:'71.98.0081',q:20,p:1440, cat:'conf'},
+    {d:'Microphone PLM401F',               b:'televic',ref:'71.98.0094',q:20,p:215,  cat:'conf'},
+    {d:'Caméra PTZ VC-TR40 (suivi auto, 20x)',b:'lumens',ref:'VC-TR40', q:1, p:1699, cat:'video'},
+    {d:'Processeur CamConnect Pro',        b:'lumens', ref:'CamConnect Pro',q:1,p:1549,cat:'video'},
+    {d:'Décodeur OIP-N60D',               b:'lumens', ref:'OIP-N60D',  q:2, p:599,  cat:'video'},
+    {d:'Amplificateur CS352',              b:'lea',    ref:'CS352',     q:1, p:1410, cat:'sono'},
+    {d:'Enceinte coaxiale CX61',           b:'renkus', ref:'CX61',      q:4, p:655,  cat:'sono'},
+    {d:'Support mural CX61',               b:'renkus', ref:'UBRKT/CT61B',q:4,p:80,  cat:'sono'},
+    {d:'Écran LED mobile 138" XWALL Plus', b:'qs',     ref:'XW13815-M', q:1, p:31900,cat:'ecran'},
+   ],
+   specs:['FLEX G4 : tactile 5,2", NFC, double batterie hot-swap','CX61 : 6,5" coaxiale, 120 dB @1m — rendu naturel ≤80m²','CS352 : 2×350W, Smart Bridge 700W, monitoring temps réel','XWALL Plus 138" : 1920×1080, pitch 1,5mm GOB, Android 9'],
+   opt:'Licences L-VT/L-ID/L-DU. WAP G4 Dante (+475€). 2ème CHT G4 si rotation batteries. 📝 TranscribIA Ill-Res 1an (3 800 €).'},
+
+  {id:'05',name:'Salle de conseil / visio — Filaire',pax:'20 participants',sys:'Confidea FLEX Plixus',
+   tags:['plixus','confidea','lumens','lea','renkus','all'],
+   desc:"Solution filaire Plixus AE-R avec postes Confidea FLEX pour salle de conseil. Audio hybride UBX8 + CX61, suivi caméra Camera Control, affichage LED PURE fixe.",
+   sp:false,
+   items:[
+    {d:'Centrale Plixus AE-R',             b:'televic',ref:'71.98.2902',q:1, p:3890, cat:'conf'},
+    {d:'Poste Confidea FLEX Mike',         b:'televic',ref:'71.98.0133',q:20,p:900,  cat:'conf'},
+    {d:'Microphone PLM401F',               b:'televic',ref:'71.98.0094',q:20,p:215,  cat:'conf'},
+    {d:'Logiciel Camera Control',          b:'televic',ref:'99.99.0020',q:1, p:2900, cat:'video'},
+    {d:'Caméra PTZ VC-TR40 (suivi auto, 20x)',b:'lumens',ref:'VC-TR40', q:1, p:1699, cat:'video'},
+    {d:'Décodeur OIP-N60D',               b:'lumens', ref:'OIP-N60D',  q:3, p:599,  cat:'video'},
+    {d:'Amplificateur CS352',              b:'lea',    ref:'CS352',     q:1, p:1410, cat:'sono'},
+    {d:'Enceinte colonne passive UBX8',    b:'renkus', ref:'UBX8-BK',   q:2, p:1350, cat:'sono'},
+    {d:'Enceinte coaxiale CX61',           b:'renkus', ref:'CX61',      q:2, p:655,  cat:'sono'},
+    {d:'Support mural CX61',               b:'renkus', ref:'UBRKT/CT61B',q:2,p:80,  cat:'sono'},
+    {d:'Écran LED PURE 135" XWALL Pure',   b:'qs',     ref:'XW13515-PURESMD',q:1,p:23500,cat:'ecran'},
+   ],
+   specs:['Plixus AE-R : réseau IP, 220W incluse, enregistrement intégré','Camera Control : suivi jusqu\'à 8 caméras PTZ, sync Cocon','Audio hybride UBX8+CX61 : couverture longue + dispersion large','XWALL PURE 135" : pitch 1,5mm SMD, Full HD, support mural'],
+   opt:'Licences L-VT/L-ID. Confero 360 (71.98.3000). Plixus AE-R Dante (71.98.2904). 📝 TranscribIA Ill-Res 1an (3 800 €).'},
+
+  {id:'06',name:'Boardroom — uniCOS Core T',pax:'12 participants',sys:'Plixus AE-R + uniCOS Core T',
+   tags:['plixus','unicos','lumens','lea','renkus','all'],
+   desc:"Salle de direction avec postes uniCOS Core T à écran tactile 10\". Affichage multiflux vidéo par poste, Camera Control pour suivi des intervenants, LED PURE en fond de salle.",
+   sp:false,
+   items:[
+    {d:'Centrale Plixus AE-R',             b:'televic',ref:'71.98.2902',q:1, p:3890, cat:'conf'},
+    {d:'Poste uniCOS Core T (10" tactile)',b:'televic',ref:'71.98.2015',q:12,p:2420, cat:'conf'},
+    {d:'Microphone PLM401F',               b:'televic',ref:'71.98.0094',q:12,p:215,  cat:'conf'},
+    {d:'Logiciel Camera Control',          b:'televic',ref:'99.99.0020',q:1, p:2900, cat:'video'},
+    {d:'Caméra PTZ VC-TR60A (4K, suivi auto, 12x)',b:'lumens',ref:'VC-TR60A',q:2,p:2199,cat:'video'},
+    {d:'Décodeur OIP-N60D',               b:'lumens', ref:'OIP-N60D',  q:3, p:599,  cat:'video'},
+    {d:'Amplificateur CS352',              b:'lea',    ref:'CS352',     q:1, p:1410, cat:'sono'},
+    {d:'Enceinte colonne passive UBX8',    b:'renkus', ref:'UBX8-BK',   q:2, p:1350, cat:'sono'},
+    {d:'Enceinte coaxiale CX61',           b:'renkus', ref:'CX61',      q:2, p:655,  cat:'sono'},
+    {d:'Support mural CX61',               b:'renkus', ref:'UBRKT/CT61B',q:2,p:80,  cat:'sono'},
+    {d:'Écran LED PURE 135" XWALL Pure',   b:'qs',     ref:'XW13515-PURESMD',q:1,p:23500,cat:'ecran'},
+   ],
+   specs:['uniCOS Core T : tactile 10", 6 flux vidéo, caméra 5MP, USB charge','Compatible Confero (pas CoCon) — logiciel salle inclus AE-R','Camera Control : 8 caméras PTZ, incrustation noms délégués','XWALL PURE 135" : multi-source HDMI, support mural inclus'],
+   opt:'Plixus V-IN/V-OUT (71.98.2921/2922). Plaques nominatives NP1 (71.98.2050). Confero 360. 📝 TranscribIA Ill-Res 1an (3 800 €).'},
+
+  {id:'07',name:'Boardroom — Arthur Holm DB2 / DB3 Talk',pax:'12 participants',sys:'Plixus AE-R + AH Talk',
+   tags:['plixus','confidea','lumens','lea','renkus','all'],
+   desc:"Salle de direction prestige avec moniteurs rétractables Arthur Holm intégrant l'élévateur de microphone. PLM401F sur élévateur Talk, Camera Control, LED PURE.",
+   sp:true,spLbl:'Arthur Holm',
+   items:[
+    {d:'Centrale Plixus AE-R',             b:'televic',ref:'71.98.2902',   q:1, p:3890,  sp:false,cat:'conf'},
+    {d:'Moniteur rétractable DB2/DB3 Talk',b:'arthur', ref:'AH17DB3Talk',  q:12,p:0,     sp:true, cat:'conf'},
+    {d:'Microphone PLM401F',               b:'televic',ref:'71.98.0094',   q:12,p:215,   sp:false,cat:'conf'},
+    {d:'Logiciel Camera Control',          b:'televic',ref:'99.99.0020',   q:1, p:2900,  sp:false,cat:'video'},
+    {d:'Caméra PTZ VC-TR60A (4K, suivi auto, 12x)',b:'lumens',ref:'VC-TR60A',q:2,p:2199,sp:false,cat:'video'},
+    {d:'Décodeur OIP-N60D',               b:'lumens', ref:'OIP-N60D',     q:3, p:599,   sp:false,cat:'video'},
+    {d:'Amplificateur CS352',              b:'lea',    ref:'CS352',        q:1, p:1410,  sp:false,cat:'sono'},
+    {d:'Enceinte colonne passive UBX8',    b:'renkus', ref:'UBX8-BK',      q:2, p:1350,  sp:false,cat:'sono'},
+    {d:'Enceinte coaxiale CX61',           b:'renkus', ref:'CX61',         q:2, p:655,   sp:false,cat:'sono'},
+    {d:'Support mural CX61',               b:'renkus', ref:'UBRKT/CT61B',  q:2, p:80,    sp:false,cat:'sono'},
+    {d:'Écran LED PURE 135" XWALL Pure',   b:'qs',     ref:'XW13515-PURESMD',q:1,p:23500,sp:false,cat:'ecran'},
+   ],
+   specs:['DB2/DB3 Talk : élévateur micro indépendant, inclinaison 90°→20°, AHlink','PLM401F sur élévateur : 40cm push & lock, anti-GSM','⚠ Compatibilité 2EMM + Talk à confirmer avant commande','XWALL PURE 135" : dalle LED fixe, pitch 1,5mm, Full HD prestige'],
+   opt:'Écran tactile TS17/TS22 (+800–900€/u, SP). Caméra DCAMUSBDB3 (+650€/u, SP). AHDCRUSBCI (+900€/u). 📝 TranscribIA Ill-Res 1an (3 800 €).'},
+
+  {id:'08',name:'Salle de conseil (grande capacité)',pax:'~30 participants',sys:'Confidea F/FLEX + CoCon',
+   tags:['plixus','confidea','cocon','lumens','lea','renkus','all'],
+   desc:"Grande salle de conseil avec postes Confidea F encastrés au 1er rang et Confidea FLEX aux autres rangs. CoCon Discussion, Camera Control, colonnes UBX16, LED PURE.",
+   sp:false,
+   items:[
+    {d:'Centrale Plixus AE-R',             b:'televic',ref:'71.98.2902',q:1, p:3890, cat:'conf'},
+    {d:'Extenseur Plixus NEXT',            b:'televic',ref:'71.98.2911',q:1, p:1405, cat:'conf'},
+    {d:'Poste encastré président F-CD Mike',b:'televic',ref:'71.98.0541',q:1,p:720,  cat:'conf'},
+    {d:'Poste encastré délégué F-DD Mike', b:'televic',ref:'71.98.0531',q:5, p:665,  cat:'conf'},
+    {d:'Poste Confidea FLEX Mike (autres rangs)',b:'televic',ref:'71.98.0133',q:24,p:900,cat:'conf'},
+    {d:'Microphone PLM401F',               b:'televic',ref:'71.98.0094',q:30,p:215,  cat:'conf'},
+    {d:'Logiciel CoCon Discussion',        b:'televic',ref:'71.98.1101',q:1, p:4180, cat:'conf'},
+    {d:'Logiciel Camera Control',          b:'televic',ref:'99.99.0020',q:1, p:2900, cat:'video'},
+    {d:'Caméra PTZ VC-TR60A (4K, suivi auto, 12x)',b:'lumens',ref:'VC-TR60A',q:2,p:2199,cat:'video'},
+    {d:'Décodeur OIP-N60D',               b:'lumens', ref:'OIP-N60D',  q:4, p:599,  cat:'video'},
+    {d:'Amplificateur CS702',              b:'lea',    ref:'CS702',     q:1, p:2010, cat:'sono'},
+    {d:'Enceinte colonne passive UBX16',   b:'renkus', ref:'UBX16-BK',  q:2, p:2330, cat:'sono'},
+    {d:'Écran LED PURE 135" XWALL Pure',   b:'qs',     ref:'XW13515-PURESMD',q:1,p:23500,cat:'ecran'},
+   ],
+   specs:['Plixus NEXT : extension ports >32 postes, redondance réseau','CoCon Discussion : gestion réunion, API tiers, synoptique opérateur','UBX16 : 16 HP 3", 124dB @1m, portée ~40m — CS702 2×700W','F-DD/F-CD : encastré tout-en-un avec haut-parleur intégré'],
+   opt:'CoCon Voting (+3 445€) + Authentication (+1 970€). CoCon Signage (2 030€/écran). Plixus 8 Channel. 📝 TranscribIA Ill-Res 1an (3 800 €).'},
+
+  {id:'09',name:'Hémicycle — Interprétation infrarouge',pax:'~56 participants',sys:'uniCOS Pro + Lingua IR',
+   tags:['plixus','unicos','cocon','lingua','lumens','lea','renkus','all'],
+   desc:"Hémicycle avec podium uniCOS Pro T, 1er rang Confidea F encastré, autres rangs Confidea FLEX, cabines Lingua ID et distribution infrarouge Lingua IR. CoCon + Camera Control.",
+   sp:false,
+   items:[
+    {d:'Centrale Plixus AE-R',             b:'televic',ref:'71.98.2902',q:1, p:3890, cat:'conf'},
+    {d:'Extenseur Plixus NEXT',            b:'televic',ref:'71.98.2911',q:2, p:1405, cat:'conf'},
+    {d:'Poste podium uniCOS Pro T (10")',  b:'televic',ref:'71.98.2005',q:4, p:3530, cat:'conf'},
+    {d:'Poste encastré président F-CD Mike',b:'televic',ref:'71.98.0541',q:1,p:720,  cat:'conf'},
+    {d:'Poste encastré délégué F-DD Mike', b:'televic',ref:'71.98.0531',q:11,p:665,  cat:'conf'},
+    {d:'Poste Confidea FLEX Mike (rangs)',  b:'televic',ref:'71.98.0133',q:30,p:900,  cat:'conf'},
+    {d:'Microphone PLM401F (ensemble)',     b:'televic',ref:'71.98.0094',q:46,p:215,  cat:'conf'},
+    {d:'Pupitre interprète Lingua ID Mike',b:'televic',ref:'71.98.2103',q:2, p:2400, cat:'conf'},
+    {d:'Transmetteur IR Lingua T (6 can.)',b:'televic',ref:'71.98.0215',q:1, p:4050, cat:'conf'},
+    {d:'Diffuseur IR Lingua RAD_H (25W)',  b:'televic',ref:'71.98.0220',q:2, p:4050, cat:'conf'},
+    {d:'Récepteur IR Lingua R (40 can.)',  b:'televic',ref:'71.98.0208',q:30,p:280,  cat:'conf'},
+    {d:'Logiciel CoCon Discussion',        b:'televic',ref:'71.98.1101',q:1, p:4180, cat:'conf'},
+    {d:'Logiciel Camera Control',          b:'televic',ref:'99.99.0020',q:1, p:2900, cat:'video'},
+    {d:'Caméra PTZ VC-A71P (4K, 30x, NDI)',b:'lumens', ref:'VC-A71P',  q:2, p:3099, cat:'video'},
+    {d:'Décodeur OIP-N60D',               b:'lumens', ref:'OIP-N60D',  q:4, p:599,  cat:'video'},
+    {d:'Amplificateur CS702',              b:'lea',    ref:'CS702',     q:1, p:2010, cat:'sono'},
+    {d:'Enceinte colonne passive UBX16',   b:'renkus', ref:'UBX16-BK',  q:2, p:2330, cat:'sono'},
+    {d:'Écran LED PURE 135" XWALL Pure',   b:'qs',     ref:'XW13515-PURESMD',q:1,p:23500,cat:'ecran'},
+   ],
+   specs:['uniCOS Pro T : tactile 10" rabattable, caméra 5MP, RFID, USB charge','Lingua T + RAD_H : IR numérique 40 canaux, 25W, délai auto','Lingua ID Mike : jusqu\'à 11 langues sans logiciel additionnel','2× Plixus NEXT : capacité >64 postes, redondance réseau assurée'],
+   opt:'Canaux IR suppl. : Lingua L12 (+1 355€) ou L40 (+4 475€). CoCon Interpretation. Valise 64 récepteurs (71.98.0235, 3 525€). 📝 TranscribIA Ill-Res 1an (3 800€).'},
+
+  {id:'10',name:'Auditorium — Interprétation UNITE',pax:'~56 participants',sys:'uniCOS Pro + UNITE',
+   tags:['plixus','unicos','cocon','lingua','lumens','lea','renkus','all'],
+   desc:"Auditorium avec podium uniCOS Pro T, rangs mixtes Confidea F/FLEX, cabines Lingua ID et distribution simultanée sans fil UNITE. CoCon Discussion, Camera Control, LED PURE.",
+   sp:true,spLbl:'UNITE',
+   items:[
+    {d:'Centrale Plixus AE-R',             b:'televic',ref:'71.98.2902',   q:1, p:3890,  sp:false,cat:'conf'},
+    {d:'Extenseur Plixus NEXT',            b:'televic',ref:'71.98.2911',   q:2, p:1405,  sp:false,cat:'conf'},
+    {d:'Poste podium uniCOS Pro T (10")',  b:'televic',ref:'71.98.2005',   q:4, p:3530,  sp:false,cat:'conf'},
+    {d:'Poste encastré président F-CD Mike',b:'televic',ref:'71.98.0541',  q:1, p:720,   sp:false,cat:'conf'},
+    {d:'Poste encastré délégué F-DD Mike', b:'televic',ref:'71.98.0531',   q:11,p:665,   sp:false,cat:'conf'},
+    {d:'Poste Confidea FLEX Mike (rangs)', b:'televic',ref:'71.98.0133',   q:30,p:900,   sp:false,cat:'conf'},
+    {d:'Microphone PLM401F (ensemble)',     b:'televic',ref:'71.98.0094',   q:46,p:215,   sp:false,cat:'conf'},
+    {d:'Pupitre interprète Lingua ID Mike',b:'televic',ref:'71.98.2103',   q:2, p:2400,  sp:false,cat:'conf'},
+    {d:'Système UNITE (transmetteur + récepteurs)',b:'televic',ref:'UNITE', q:1, p:0,    sp:true, cat:'conf'},
+    {d:'Logiciel CoCon Discussion',        b:'televic',ref:'71.98.1101',   q:1, p:4180,  sp:false,cat:'conf'},
+    {d:'Logiciel Camera Control',          b:'televic',ref:'99.99.0020',   q:1, p:2900,  sp:false,cat:'video'},
+    {d:'Caméra PTZ VC-A71P (4K, 30x, NDI)',b:'lumens', ref:'VC-A71P',     q:2, p:3099,  sp:false,cat:'video'},
+    {d:'Décodeur OIP-N60D',               b:'lumens', ref:'OIP-N60D',     q:4, p:599,   sp:false,cat:'video'},
+    {d:'Amplificateur CS702',              b:'lea',    ref:'CS702',        q:1, p:2010,  sp:false,cat:'sono'},
+    {d:'Enceinte colonne passive UBX16',   b:'renkus', ref:'UBX16-BK',     q:2, p:2330,  sp:false,cat:'sono'},
+    {d:'Écran LED PURE 135" XWALL Pure',   b:'qs',     ref:'XW13515-PURESMD',q:1,p:23500,sp:false,cat:'ecran'},
+   ],
+   specs:['UNITE : distribution multilingue sans fil RF — alternative IR, plus discrète','uniCOS Pro T : tactile 10" rabattable, caméra 5MP, RFID, USB','Lingua ID Mike : jusqu\'à 11 langues sans logiciel additionnel','CS702 + 2×UBX16 : couverture longue portée auditorium, 2×700W'],
+   opt:'CoCon Voting + Authentication (+5 415€). CoCon Interpretation si >11 langues. uniCOS Pro F encastré (+475€/u). 📝 TranscribIA Ill-Res 1an (3 800€).'},
+];
+
+// ─── EXTRAS state: { [bundleId]: [{...extra, qty:1}] }
+const extraItems = {};
+BUNDLES.forEach(b => extraItems[b.id] = []);
+
+// ─── HELPERS ─────────────────────────────────────
+function fmt(n){return n.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';}
+function fmtShort(n){return n.toLocaleString('fr-FR',{minimumFractionDigits:0,maximumFractionDigits:0})+' €';}
+
+function bundleBaseTotal(b){
+  return b.items.reduce((s,it)=>s+(it.sp?0:it.q*it.p),0);
+}
+function bundleExtrasTotal(bid){
+  return extraItems[bid].reduce((s,e)=>s+(e.sp?0:e.q*e.p),0);
+}
+function bundleGrandTotal(b){
+  return bundleBaseTotal(b)+bundleExtrasTotal(b.id);
+}
+function catTotal(b,cat){
+  const base=b.items.filter(it=>it.cat===cat&&!it.sp).reduce((s,it)=>s+it.q*it.p,0);
+  const extra=extraItems[b.id].filter(e=>e.cat===cat&&!e.sp).reduce((s,e)=>s+e.q*e.p,0);
+  return base+extra;
+}
+
+let currentBid = BUNDLES[0].id;
+let editOn = false;
+let drawerBid = null;
+let drawerCatFilter = 'all';
+
+// ─── SIDEBAR ─────────────────────────────────────
+function renderSidebar(){
+  const nav=document.getElementById('sbNav');
+  nav.innerHTML='';
   BUNDLES.forEach(b=>{
-    const tot=bundleTotal(b);
-    const hasSp=b.items.some(it=>it.sp);
-    const prcHtml=hasSp
-      ?`${fmt(tot).replace(',00 €',' €')} <span style="color:var(--black-50);font-size:12px;font-weight:500">+ SP</span>`
-      :fmt(tot).replace(',00 €',' €');
-    const tr=document.createElement('tr');
-    tr.title=`Accéder au Bundle ${b.id}`;
-    tr.onclick=()=>{
-      const el=document.getElementById(`bundle-${b.id}`);
-      if(el){ el.scrollIntoView({behavior:'smooth',block:'start'}); }
-    };
-    tr.innerHTML=`<td>${b.id}</td>
-      <td>${b.name} <span class="ov-link-arrow">↓</span></td>
-      <td class="sys">${b.sys}</td>
-      <td class="prc" id="ov${b.id}">${prcHtml}</td>`;
-    tb.appendChild(tr);
+    const tot=bundleGrandTotal(b);
+    const hasSp=b.items.some(it=>it.sp)||extraItems[b.id].some(e=>e.sp);
+    const el=document.createElement('div');
+    el.className='sb-item'+(b.id===currentBid?' active':'');
+    el.id=`sb-${b.id}`;
+    el.onclick=()=>showBundle(b.id);
+    el.innerHTML=`<span class="sb-num">${b.id}</span>
+      <div class="sb-info">
+        <div class="sb-name">${b.name}</div>
+        <div class="sb-sys">${b.sys}</div>
+      </div>
+      <span class="sb-price" id="sbp-${b.id}">${fmtShort(tot)}${hasSp?'<span style="font-size:8px;color:var(--k50)"> +SP</span>':''}</span>`;
+    nav.appendChild(el);
   });
 }
 
-// ─── RENDER GRID ──────────────────────────
-function renderGrid(){
-  const grid=document.getElementById('grid');
-  grid.innerHTML='';
+function filterSidebar(q){
+  document.querySelectorAll('.sb-item').forEach(el=>{
+    const name=el.querySelector('.sb-name').textContent.toLowerCase();
+    const sys=el.querySelector('.sb-sys').textContent.toLowerCase();
+    el.style.display=(name+sys).includes(q.toLowerCase())?'':'none';
+  });
+}
+
+function showBundle(bid){
+  currentBid=bid;
+  document.querySelectorAll('.bundle-view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(`bv-${bid}`).classList.add('active');
+  document.querySelectorAll('.sb-item').forEach(el=>el.classList.remove('active'));
+  const sbEl=document.getElementById(`sb-${bid}`);
+  if(sbEl){sbEl.classList.add('active');sbEl.scrollIntoView({block:'nearest'});}
+}
+
+// ─── RENDER ALL VIEWS ─────────────────────────────
+function renderAll(){
+  renderSidebar();
+  renderViews();
+}
+
+function renderViews(){
+  const container=document.getElementById('bundleViews');
+  container.innerHTML='';
   BUNDLES.forEach(b=>{
-    const tot=bundleTotal(b);
-    const hasSp=b.items.some(it=>it.sp);
+    const div=document.createElement('div');
+    div.className='bundle-view'+(b.id===currentBid?' active':'');
+    div.id=`bv-${b.id}`;
+    div.innerHTML=buildBundle(b);
+    container.appendChild(div);
+  });
+}
 
-    // Group items by category in order
-    const groups={};
-    CAT_ORDER.forEach(c=>groups[c]=[]);
-    b.items.forEach((it,i)=>{ (groups[it.cat||'conf']).push({...it,_i:i}); });
+function buildBundle(b){
+  const tot=bundleGrandTotal(b);
+  const hasSp=b.items.some(it=>it.sp)||extraItems[b.id].some(e=>e.sp);
+  const extras=extraItems[b.id];
 
-    // Build rows grouped with subtotal after each non-empty group
-    let rows='';
-    CAT_ORDER.forEach(cat=>{
-      const catItems=groups[cat];
-      if(!catItems.length) return;
-      const color=CAT_COLORS[cat];
-      // Category header row
-      rows+=`<tr class="cat-hdr" style="background:${color}10;border-top:2px solid ${color}40">
-        <td colspan="6" style="padding:6px 10px;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:${color}">${CAT_LABELS[cat]}</td>
-      </tr>`;
-      // Items
-      catItems.forEach(it=>{
-        const isSp=it.sp===true;
-        const ltHtml=isSp?`<span style="color:var(--black-50);font-style:italic;font-weight:400">Sur Projet</span>`:fmt(it.q*it.p);
-        const puHtml=isSp?`<span style="color:var(--black-50);font-style:italic">Sur Projet</span>`:fmt(it.p);
-        const qtyEdit=isSp
-          ?`<span class="qty-text">${it.q}</span>`
-          :`<span class="qty-text">${it.q}</span><input class="qty-input" type="number" min="0" value="${it.q}" data-bid="${b.id}" data-i="${it._i}" data-pu="${it.p}" data-cat="${cat}" onclick="event.stopPropagation()" oninput="onQty(this)">`;
-        const brandUrl=URLS[it.b]?.url||'#';
-        const brandLbl=URLS[it.b]?.lbl||'';
-        rows+=`<tr class="dr" data-url="${brandUrl}" data-tip="${brandLbl}" onclick="rowNav(this)">
-          <td class="dname">${it.d}<span class="link-badge">${brandLbl}</span></td>
-          <td class="brand brand-${it.b}">${BRAND_NAMES[it.b]||it.b}</td>
-          <td class="ref">${it.ref}</td>
-          <td class="qty-cell">${qtyEdit}</td>
-          <td class="pu">${puHtml}</td>
-          <td class="lt" id="lt-${b.id}-${it._i}">${ltHtml}</td>
-        </tr>`;
-      });
-      // Subtotal row
-      const stVal=catTotal(b,cat);
-      const hasCatSp=catItems.some(it=>it.sp);
-      const stHtml=hasCatSp&&stVal===0
-        ?`<span style="color:var(--black-50);font-style:italic">Sur Projet</span>`
-        :(hasCatSp?`${fmt(stVal)} <span style="font-size:10px;color:var(--black-30)">+ SP</span>`:fmt(stVal));
-      rows+=`<tr class="st-row" style="background:${color}10">
-        <td colspan="5" style="padding:6px 10px 8px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:${color};text-align:right">Sous-total ${CAT_LABELS[cat].split(' ').slice(1).join(' ')}</td>
-        <td style="padding:6px 10px 8px;text-align:right;font-weight:700;font-size:12px;color:${color};white-space:nowrap;font-variant-numeric:tabular-nums" id="st-${b.id}-${cat}">${stHtml}</td>
+  // Group items by cat
+  const groups={};
+  ['conf','video','sono','ecran'].forEach(c=>{groups[c]=[];});
+  b.items.forEach((it,i)=>{(groups[it.cat||'conf']).push({...it,_i:i,_extra:false});});
+
+  const CAT_COLORS={conf:'var(--conf)',video:'var(--video)',sono:'var(--sono)',ecran:'var(--ecran)'};
+  let rows='';
+  let hasExtrasSomewhere=extras.length>0;
+
+  CAT_ORDER.forEach(cat=>{
+    const items=groups[cat]||[];
+    const catExtras=extras.filter(e=>e.cat===cat);
+    if(!items.length&&!catExtras.length) return;
+    const color=CAT_COLORS[cat];
+    rows+=`<tr class="cat-hdr cat-${cat}"><td colspan="6">${CAT_LABELS[cat]}</td></tr>`;
+    items.forEach(it=>{
+      const isSp=it.sp===true;
+      const lt=isSp?`<span style="color:var(--k50);font-style:italic">SP</span>`:fmt(it.q*it.p);
+      const pu=isSp?`<span style="color:var(--k50);font-style:italic">SP</span>`:fmt(it.p);
+      const qtEdit=isSp?`<span class="qt">${it.q}</span>`
+        :`<span class="qt">${it.q}</span><input class="qi" type="number" min="0" value="${it.q}" data-bid="${b.id}" data-i="${it._i}" data-pu="${it.p}" data-cat="${cat}" onclick="event.stopPropagation()" oninput="onQty(this)">`;
+      const bUrl=URLS[it.b]?.url||'#';
+      const bLbl=URLS[it.b]?.lbl||'';
+      rows+=`<tr class="dr" data-url="${bUrl}" data-tip="${bLbl}" onclick="rowNav(this)">
+        <td class="dn">${it.d}<span class="lb">${bLbl}</span></td>
+        <td class="brand brand-${it.b}">${BN[it.b]||it.b}</td>
+        <td class="ref">${it.ref}</td>
+        <td class="qc">${qtEdit}</td>
+        <td class="pr">${pu}</td>
+        <td class="lt" id="lt-${b.id}-${it._i}">${lt}</td>
       </tr>`;
     });
-
-    const footLbl=hasSp?`TOTAL HT (hors ${b.spLbl||'SP'})`:'TOTAL HT';
-    const footVal=hasSp
-      ?`<span id="ftot${b.id}">${fmt(tot)}</span> <span style="font-size:11px;color:var(--black-30)">+ SP</span>`
-      :`<span id="ftot${b.id}">${fmt(tot)}</span>`;
-    const priceBadge=hasSp
-      ?`<span class="bprice-val sp" id="ptot${b.id}">${fmt(tot)} + ${b.spLbl||'SP'}</span>`
-      :`<span class="bprice-val" id="ptot${b.id}">${fmt(tot)}</span>`;
-
-    const card=document.createElement('div');
-    card.className='bundle-card';
-    card.id=`bundle-${b.id}`;
-    card.innerHTML=`
-      <div class="bh">
-        <div class="bnum">BUNDLE ${b.id}</div>
-        <div class="bname">${b.name}</div>
-        <div class="bmeta"><span>${b.pax}</span><span class="sys">${b.sys}</span></div>
-      </div>
-      <div class="bprice">
-        <span class="bprice-lbl">Total HT indicatif</span>
-        ${priceBadge}
-      </div>
-      <p class="bdesc">${b.desc}</p>
-      <div class="bom-wrap">
-        <table class="bom">
-          <thead><tr><th>Désignation</th><th>Marque</th><th>Réf.</th><th class="c">Qté</th><th class="r">P.U. HT</th><th class="r">Total HT</th></tr></thead>
-          <tbody>
-            ${rows}
-            <tr class="bom-foot">
-              <td class="ft-lbl" colspan="5">${footLbl}</td>
-              <td class="ft-val">${footVal}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="specs">
-        <div class="specs-ttl">Spécifications clés</div>
-        <ul>${b.specs.map(s=>`<li>${s}</li>`).join('')}</ul>
-      </div>
-      <div class="opt">
-        <div class="opt-lbl">En option</div>
-        <div class="opt-txt">${b.opt}</div>
-      </div>`;
-    grid.appendChild(card);
+    // Extra items for this cat
+    catExtras.forEach((ex,xi)=>{
+      const isSp=ex.sp===true;
+      const lt=isSp?`<span style="color:var(--k50);font-style:italic">SP</span>`:fmt(ex.q*ex.p);
+      const pu=isSp?`<span style="color:var(--k50);font-style:italic">SP</span>`:fmt(ex.p);
+      const bUrl=URLS[ex.b]?.url||'#';
+      const bLbl=URLS[ex.b]?.lbl||'';
+      const exIdx=extras.indexOf(ex);
+      rows+=`<tr class="extra-row" data-url="${bUrl}" onclick="rowNav(this)">
+        <td class="dn" style="color:var(--green-d);font-style:italic">+ ${ex.d}<span class="lb">${bLbl}</span>
+          <button class="remove-btn" onclick="event.stopPropagation();removeExtra('${b.id}',${exIdx})">✕</button>
+        </td>
+        <td class="brand brand-${ex.b}">${BN[ex.b]||ex.b}</td>
+        <td class="ref">${ex.ref}</td>
+        <td class="qc"><span>${ex.q}</span></td>
+        <td class="pr">${pu}</td>
+        <td class="lt" id="exlt-${b.id}-${exIdx}">${lt}</td>
+      </tr>`;
+    });
+    // Subtotal
+    const stVal=catTotal(b,cat);
+    const hasCatSp=(items.some(it=>it.sp)||catExtras.some(e=>e.sp))&&stVal===0;
+    const stHtml=hasCatSp?`<span style="color:var(--k50);font-style:italic">Sur Projet</span>`:fmt(stVal);
+    rows+=`<tr class="st-row">
+      <td colspan="5" class="st-lbl" style="color:${color}">Sous-total ${CAT_LABELS[cat].split(' ').slice(1).join(' ')}</td>
+      <td style="color:${color}" id="st-${b.id}-${cat}">${stHtml}</td>
+    </tr>`;
   });
+
+  const footLbl=hasSp?`TOTAL HT (hors ${b.spLbl||'SP'})`:'TOTAL HT';
+  const footVal=hasSp
+    ?`<span id="gt-${b.id}">${fmt(tot)}</span> <span style="font-size:11px;color:var(--green-l)">+ SP</span>`
+    :`<span id="gt-${b.id}">${fmt(tot)}</span>`;
+
+  const priceDisplay=hasSp
+    ?`<span class="price-val sp" id="ptot-${b.id}">${fmt(tot)} + ${b.spLbl||'SP'}</span>`
+    :`<span class="price-val" id="ptot-${b.id}">${fmt(tot)}</span>`;
+
+  const extrasNote=hasExtrasSomewhere
+    ?`<span style="font-size:11px;color:var(--k50)">${extras.length} complément(s) ajouté(s)</span>`:'';
+
+  return `
+  <div class="bh">
+    <div class="bh-num">BUNDLE ${b.id}</div>
+    <div class="bh-name">${b.name}</div>
+    <div class="bh-meta"><span>${b.pax}</span><span class="bh-sys">${b.sys}</span></div>
+  </div>
+  <div class="price-bar">
+    <span class="price-lbl">Total HT indicatif</span>
+    ${priceDisplay}
+  </div>
+  <div class="bcard">
+    <p class="bdesc">${b.desc}</p>
+    <div class="bom-section">
+      <div class="bom-title">Nomenclature</div>
+      <table class="bom">
+        <colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"><col class="c5"><col class="c6"></colgroup>
+        <thead><tr>
+          <th>Désignation</th><th>Marque</th><th>Réf.</th>
+          <th class="c">Qté</th><th class="r">P.U. HT</th><th class="r">Total HT</th>
+        </tr></thead>
+        <tbody>
+          ${rows}
+          <tr class="tot-row">
+            <td colspan="5" style="font-size:11px;letter-spacing:.06em;text-transform:uppercase;">${footLbl}</td>
+            <td class="tv">${footVal}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="add-extras-bar">
+      <button class="btn-add-extra" onclick="openDrawer('${b.id}')">➕ Ajouter un complément</button>
+      ${extrasNote}
+    </div>
+    <div class="specs-opt">
+      <div class="specs-block">
+        <div class="block-lbl">Spécifications clés</div>
+        <ul class="specs-list">${b.specs.map(s=>`<li>${s}</li>`).join('')}</ul>
+      </div>
+      <div class="opt-block">
+        <div class="block-lbl">Options & upsell</div>
+        <div class="opt-text">${b.opt}</div>
+      </div>
+    </div>
+  </div>`;
 }
 
-// ─── QTY UPDATE ───────────────────────────
+// ─── QTY UPDATE ──────────────────────────────────
 function onQty(input){
-  const bid=input.dataset.bid, i=parseInt(input.dataset.i), pu=parseFloat(input.dataset.pu), cat=input.dataset.cat;
+  const bid=input.dataset.bid,i=parseInt(input.dataset.i),pu=parseFloat(input.dataset.pu),cat=input.dataset.cat;
   const q=Math.max(0,parseInt(input.value)||0);
   const b=BUNDLES.find(x=>x.id===bid);
   b.items[i].q=q;
   const lt=document.getElementById(`lt-${bid}-${i}`);
   if(lt) lt.textContent=fmt(q*pu);
-  // update subtotal for this category
-  const stCell=document.getElementById(`st-${bid}-${cat}`);
-  if(stCell){
-    const hasCatSp=b.items.filter(it=>it.cat===cat).some(it=>it.sp);
-    const stVal=catTotal(b,cat);
-    stCell.textContent='';
-    if(hasCatSp&&stVal===0) stCell.innerHTML=`<span style="color:var(--black-50);font-style:italic">Sur Projet</span>`;
-    else if(hasCatSp) stCell.innerHTML=`${fmt(stVal)} <span style="font-size:10px;color:var(--black-30)">+ SP</span>`;
-    else stCell.textContent=fmt(stVal);
-  }
-  refreshTotals(bid);
+  refreshTotals(bid,cat);
 }
 
-function refreshTotals(bid){
+function refreshTotals(bid,changedCat){
   const b=BUNDLES.find(x=>x.id===bid);
-  const tot=bundleTotal(b);
-  const hasSp=b.items.some(it=>it.sp);
-  const fmtShort=fmt(tot);
-  const pb=document.getElementById(`ptot${bid}`);
-  if(pb) pb.textContent=hasSp?`${fmtShort} + ${b.spLbl||'SP'}`:fmtShort;
-  const ft=document.getElementById(`ftot${bid}`);
-  if(ft) ft.textContent=fmtShort;
-  const ov=document.getElementById(`ov${bid}`);
-  if(ov) ov.innerHTML=hasSp
-    ?`${fmtShort.replace(',00 €',' €')} <span style="color:var(--black-50);font-size:12px;font-weight:500">+ SP</span>`
-    :fmtShort.replace(',00 €',' €');
+  const tot=bundleGrandTotal(b);
+  const hasSp=b.items.some(it=>it.sp)||extraItems[bid].some(e=>e.sp);
+  // cat subtotal
+  const catsToRefresh=changedCat?[changedCat]:CAT_ORDER;
+  catsToRefresh.forEach(cat=>{
+    const stCell=document.getElementById(`st-${bid}-${cat}`);
+    if(stCell){
+      const stVal=catTotal(b,cat);
+      const hasCatSp=(b.items.filter(it=>it.cat===cat).some(it=>it.sp)||extraItems[bid].filter(e=>e.cat===cat).some(e=>e.sp))&&stVal===0;
+      stCell.innerHTML=hasCatSp?`<span style="color:var(--k50);font-style:italic">Sur Projet</span>`:fmt(stVal);
+    }
+  });
+  // grand total
+  const pt=document.getElementById(`ptot-${bid}`);
+  if(pt) pt.textContent=hasSp?`${fmt(tot)} + ${b.spLbl||'SP'}`:fmt(tot);
+  const gt=document.getElementById(`gt-${bid}`);
+  if(gt) gt.textContent=fmt(tot);
+  // sidebar
+  updateSidebarPrice(bid);
 }
 
-// ─── ROW CLICK (lecture → nav) ────────────
+function updateSidebarPrice(bid){
+  const b=BUNDLES.find(x=>x.id===bid);
+  const tot=bundleGrandTotal(b);
+  const hasSp=b.items.some(it=>it.sp)||extraItems[bid].some(e=>e.sp);
+  const sp=document.getElementById(`sbp-${bid}`);
+  if(sp) sp.innerHTML=`${fmtShort(tot)}${hasSp?'<span style="font-size:8px;color:var(--k50)"> +SP</span>':''}`;
+}
+
+// ─── ROW NAV ─────────────────────────────────────
 function rowNav(row){
-  if(document.body.classList.contains('edit')) return;
+  if(editOn) return;
   const u=row.dataset.url;
   if(u&&u!=='#') window.open(u,'_blank');
 }
 
-// ─── TOOLTIP ──────────────────────────────
+// ─── TOOLTIP ─────────────────────────────────────
 const tip=document.getElementById('tip');
 document.addEventListener('mouseover',e=>{
   const r=e.target.closest('tr.dr');
   if(!r||!r.dataset.tip) return;
-  tip.textContent=r.dataset.tip;
-  tip.classList.add('on');
-  moveTip(e);
+  tip.textContent=r.dataset.tip;tip.classList.add('on');moveTip(e);
 });
-document.addEventListener('mousemove',e=>{ if(tip.classList.contains('on')) moveTip(e); });
-document.addEventListener('mouseout',e=>{ if(e.target.closest('tr.dr')) tip.classList.remove('on'); });
-function moveTip(e){ tip.style.cssText=`left:${e.clientX+14}px;top:${e.clientY-8}px`; }
+document.addEventListener('mousemove',e=>{if(tip.classList.contains('on')) moveTip(e);});
+document.addEventListener('mouseout',e=>{if(e.target.closest('tr.dr')) tip.classList.remove('on');});
+function moveTip(e){tip.style.cssText=`left:${e.clientX+12}px;top:${e.clientY-6}px`;}
 
-// ─── MODE ─────────────────────────────────
-let editOn=false;
-function toggleMode(){ editOn?lock():openModal(); }
+// ─── EXTRAS DRAWER ───────────────────────────────
+function openDrawer(bid){
+  drawerBid=bid;
+  const b=BUNDLES.find(x=>x.id===bid);
+  document.getElementById('drawerSub').textContent=`Bundle ${bid} — ${b.name}`;
+  document.getElementById('drawerSearch').value='';
+  drawerCatFilter='all';
+  document.querySelectorAll('.filter-chip').forEach(c=>{c.classList.toggle('on',c.dataset.cat==='all');});
+  renderDrawerList();
+  document.getElementById('drawerOverlay').classList.add('open');
+  document.getElementById('drawer').classList.add('open');
+}
+function closeDrawer(){
+  document.getElementById('drawerOverlay').classList.remove('open');
+  document.getElementById('drawer').classList.remove('open');
+}
+function toggleFilter(chip){
+  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('on'));
+  chip.classList.add('on');
+  drawerCatFilter=chip.dataset.cat;
+  filterExtras();
+}
+function filterExtras(){
+  renderDrawerList();
+}
+function renderDrawerList(){
+  if(!drawerBid) return;
+  const b=BUNDLES.find(x=>x.id===drawerBid);
+  const q=(document.getElementById('drawerSearch').value||'').toLowerCase();
+  const addedIds=new Set(extraItems[drawerBid].map(e=>e.id));
+
+  // Filter catalog by bundle tags + category + search
+  const filtered=EXTRAS_CATALOG.filter(ex=>{
+    if(drawerCatFilter!=='all'&&ex.cat!==drawerCatFilter) return false;
+    const matchTag=ex.tags.some(t=>t==='all'||b.tags.includes(t));
+    if(!matchTag) return false;
+    if(q&&!ex.d.toLowerCase().includes(q)&&!ex.ref.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  const list=document.getElementById('drawerList');
+  if(!filtered.length){
+    list.innerHTML=`<div class="drawer-empty">Aucun complément disponible pour cette recherche.</div>`;
+    return;
+  }
+
+  // Group by category
+  const groups={};
+  filtered.forEach(ex=>{
+    if(!groups[ex.cat]) groups[ex.cat]=[];
+    groups[ex.cat].push(ex);
+  });
+
+  let html='';
+  const catOrder=['conf','video','sono','service'];
+  const catLbls={conf:'🎤 Conférence',video:'📷 Vidéo',sono:'🔊 Sonorisation',service:'🛠 Contrats de service'};
+  catOrder.forEach(cat=>{
+    if(!groups[cat]) return;
+    html+=`<div class="extra-group-hdr">${catLbls[cat]||cat}</div>`;
+    groups[cat].forEach(ex=>{
+      const isAdded=addedIds.has(ex.id);
+      const priceHtml=ex.sp
+        ?`<span class="ei-sp">Sur Projet</span>`
+        :`<span class="ei-price">${fmt(ex.p)}</span>`;
+      const badgeCls=`badge-${ex.cat}`;
+      html+=`<div class="extra-item${isAdded?' added':''}" data-exid="${ex.id}" data-bid="${drawerBid}" onclick="handleExtraClick(this)">
+        <div class="ei-info">
+          <div class="ei-name">${ex.d}</div>
+          <div class="ei-ref">${ex.ref}</div>
+          <span class="ei-cat-badge ${badgeCls}">${(catLbls[ex.cat]||ex.cat).split(' ').slice(1).join(' ')||ex.cat}</span>
+          <span class="ei-brand brand-${ex.b}" style="margin-left:6px">${BN[ex.b]||ex.b}</span>
+        </div>
+        ${priceHtml}
+        <button class="ei-add" title="Ajouter" ${isAdded?'disabled style="opacity:.4"':''}>+</button>
+      </div>`;
+    });
+  });
+  list.innerHTML=html;
+}
+
+function handleExtraClick(el){
+  if(el.classList.contains('added')) return;
+  const bid=el.dataset.bid, exId=el.dataset.exid;
+  addExtra(bid,exId);
+}
+
+function addExtra(bid,exId){
+  const ex=EXTRAS_CATALOG.find(e=>e.id===exId);
+  if(!ex) return;
+  // Avoid duplicate
+  if(extraItems[bid].find(e=>e.id===exId)) return;
+  extraItems[bid].push({...ex,q:1});
+  // Re-render bundle view
+  const bv=document.getElementById(`bv-${bid}`);
+  const b=BUNDLES.find(x=>x.id===bid);
+  bv.innerHTML=buildBundle(b);
+  updateSidebarPrice(bid);
+  renderDrawerList(); // refresh added states
+}
+
+function removeExtra(bid,idx){
+  extraItems[bid].splice(idx,1);
+  const bv=document.getElementById(`bv-${bid}`);
+  const b=BUNDLES.find(x=>x.id===bid);
+  bv.innerHTML=buildBundle(b);
+  updateSidebarPrice(bid);
+}
+
+// ─── MODE ─────────────────────────────────────────
+function toggleMode(){editOn?lock():openModal();}
 function openModal(){
   document.getElementById('overlay').classList.add('open');
   document.getElementById('pin').value='';
   document.getElementById('merr').textContent='';
   setTimeout(()=>document.getElementById('pin').focus(),80);
 }
-function closeModal(){ document.getElementById('overlay').classList.remove('open'); }
+function closeModal(){document.getElementById('overlay').classList.remove('open');}
 document.getElementById('pin').addEventListener('keydown',e=>{
   if(e.key==='Enter') tryUnlock();
   if(e.key==='Escape') closeModal();
 });
 function tryUnlock(){
-  if(document.getElementById('pin').value===PIN){ closeModal(); activateEdit(); }
+  if(document.getElementById('pin').value===PIN){closeModal();activateEdit();}
   else{
     const inp=document.getElementById('pin');
     inp.classList.add('err');
-    document.getElementById('merr').textContent='Code incorrect — réessayez.';
-    setTimeout(()=>{ inp.classList.remove('err'); inp.value=''; inp.focus(); },800);
+    document.getElementById('merr').textContent='Code incorrect.';
+    setTimeout(()=>{inp.classList.remove('err');inp.value='';inp.focus();},800);
   }
 }
 function activateEdit(){
   editOn=true;
   document.body.classList.add('edit');
-  document.getElementById('modeBtn').classList.add('edit-active');
+  document.getElementById('modeBtn').classList.add('on');
   document.getElementById('modeLbl').textContent='Mode édition';
-  document.getElementById('dot').classList.add('on');
+  document.getElementById('dot').style.background='var(--k75)';
   document.getElementById('banner').classList.add('open');
+  document.getElementById('editPad').classList.add('open');
 }
 function lock(){
   editOn=false;
   document.body.classList.remove('edit');
-  document.getElementById('modeBtn').classList.remove('edit-active');
+  document.getElementById('modeBtn').classList.remove('on');
   document.getElementById('modeLbl').textContent='Mode lecture';
-  document.getElementById('dot').classList.remove('on');
+  document.getElementById('dot').style.background='';
   document.getElementById('banner').classList.remove('open');
+  document.getElementById('editPad').classList.remove('open');
 }
 
-// ─── INIT ─────────────────────────────────
-renderOv();
-renderGrid();
+// ─── INIT ─────────────────────────────────────────
+renderAll();
 </script>
 </body>
 </html>
