@@ -153,7 +153,10 @@ body.edit .extra-row:hover .rm-btn{display:block;}
 .add-note{font-size:10px;color:var(--k50);font-style:italic;}
 body:not(.edit) .add-bar{display:none;}
 
-/* SPECS / OPT */
+/* ARGS */
+.args-blk{padding:14px 22px;border-top:1px solid var(--k12);background:#f9fff4;}
+.args-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.args-list li{font-size:11px;color:var(--k75);line-height:1.4;}
 .specs-opt{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--k12);}
 .specs-blk,.opt-blk{padding:14px 22px;}
 .specs-blk{border-right:1px solid var(--k12);}
@@ -293,7 +296,7 @@ body:not(.edit) .add-bar{display:none;}
 <header class="hdr">
   <div class="hdr-left">
     <div class="logo">TC</div>
-    <div><div class="hdr-title">Televic Conference France</div><div class="hdr-sub">BU Conférence Île-de-France</div></div>
+    <div><div class="hdr-title">Televic Conference France</div><div class="hdr-sub">Bundles Televic Conference France</div></div>
   </div>
   <div class="hdr-right">
     <div class="tag-year">Tarifs HT 2025–2026</div>
@@ -386,6 +389,7 @@ const BUNDLES = [
    {d:'Support mural UBX4',               b:'renkus', ref:'UBRKT/CF41B',q:2,p:50,  cat:'sono'},
   ],
   specs:['D-CERNO AE : plug & play, 50 postes max, enreg. USB','OIP-N60D : encodeur/décodeur NDI, PoE, HDMI/USB','CS34 : 4×30W, DSP intégré, Wi-Fi, LEA Cloud','UBX4 : 4 HP 3", 114dB @1m, IP64, portée ~10m'],
+  args:['✅ Déploiement rapide sans configuration réseau — opérationnel en moins d\'une heure','✅ Solution tout-en-un : audio, visio et compte-rendu dans un seul bundle','✅ Investissement maîtrisé pour salles de réunion standard (≤10 pers.)','✅ Évolutif : ajout du vote électronique via licence sans changer le matériel'],
   opt:'Vote : D-CERNO DECIDE (71.98.0362) + L-DECIDE (71.98.0315)/poste. D-CERNO Advanced (71.98.0360). 📝 TranscribIA Lim12 1an (1 950€)'},
 
  {id:'02',name:'Petite salle de conseil / visio',pax:'≤ 10 participants',sys:'Confidea FLEX filaire',
@@ -405,6 +409,7 @@ const BUNDLES = [
    {d:'Support mural CX41',               b:'renkus', ref:'UBRKT/CF41B',q:4,p:50,  cat:'sono'},
   ],
   specs:['Plixus AE-R : réseau IP, 220W inclus, enregistrement','Confidea FLEX : prés/délégué config., écran 5,2", NFC','CX41 : coaxiale 4", 109dB @1m, support mural inclus','CS34 : 4×30W — adapté 4 enceintes 16Ω en petite salle'],
+  args:['✅ Postes modulaires évolutifs : discussion, vote, identification sur même matériel','✅ Réseau Plixus robuste et chiffré — idéal salles sensibles (conseil, direction)','✅ Encastrable ou à poser : s\'adapte à tous les types de mobilier','✅ Intégration visio native sans codec externe'],
   opt:'Vote/identification : L-VT + L-ID par poste. Confero 360 (71.98.3000). 📝 TranscribIA Lim12 1an (1 950€)'},
 
  {id:'03',name:'Salle polyvalente / visio — Mobile',pax:'20 participants',sys:'Confidea GO G4 sans fil',
@@ -426,6 +431,7 @@ const BUNDLES = [
    {d:'Écran LED mobile 138" XWALL Plus', b:'qs',     ref:'XW13815-M', q:1, p:31900,cat:'ecran'},
   ],
   specs:['GO G4 : WiFi5, batterie 12h, NFC, déploiement 5 min','CHT G4 + valise CHT10 : 10 batteries chargées en 2h','CS352 : 2×350W, Smart Bridge 700W, DSP 96kHz','XWALL Plus 138" : LED pliable motorisé GOB, Android 9'],
+  args:['✅ Mobilité totale : système déployé et replié en 5 minutes sans outil','✅ Polyvalence maximale : salle de réunion le matin, formation l\'après-midi','✅ Écran LED GOB : résiste aux chocs, aucun pixel mort — fiabilité événementielle','✅ Sans câblage réseau permanent : zéro travaux d\'installation'],
   opt:'Licences L-VT/L-ID/L-DU. Support mobile XWST90 (+1 380€). Batterie BP G4 supp. (195€). 📝 TranscribIA Ill-Res 1an (3 800€)'},
 
  {id:'04',name:'Salle polyvalente de conseil / visio',pax:'20 participants',sys:'Confidea FLEX G4 sans fil',
@@ -448,6 +454,7 @@ const BUNDLES = [
    {d:'Écran LED mobile 138" XWALL Plus', b:'qs',     ref:'XW13815-M', q:1, p:31900,cat:'ecran'},
   ],
   specs:['FLEX G4 : tactile 5,2", NFC, double batterie hot-swap','CX61 : 6,5" coaxiale, 120dB @1m — rendu naturel ≤80m²','CS352 : 2×350W, Smart Bridge 700W, monitoring temps réel','XWALL Plus 138" : 1920×1080, pitch 1,5mm GOB, Android 9'],
+  args:['✅ Image haut de gamme : postes tactiles avec identification NFC des participants','✅ Double batterie hot-swap : réunion sans interruption toute la journée','✅ Acoustique premium CX61 : rendu naturel pour les discussions longues','✅ Solution nomade clés en main : valise + charge intégrée, aucune contrainte logistique'],
   opt:'Licences L-VT/L-ID/L-DU. 2ème CHT G4 si rotation batteries. Batterie BP G4 supp. (195€). 📝 TranscribIA Ill-Res 1an (3 800€)'},
 
  {id:'05',name:'Salle de conseil / visio — Filaire',pax:'20 participants',sys:'Confidea FLEX Plixus',
@@ -468,6 +475,7 @@ const BUNDLES = [
    {d:'Écran LED PURE 135" XWALL Pure',   b:'qs',     ref:'XW13515-PURESMD',q:1,p:23500,cat:'ecran'},
   ],
   specs:['Plixus AE-R : réseau IP, 220W incluse, enregistrement intégré','Camera Control : suivi jusqu\'à 8 caméras PTZ, sync Cocon','Audio hybride UBX8+CX61 : couverture longue + dispersion large','XWALL PURE 135" : pitch 1,5mm SMD, Full HD, support mural'],
+  args:['✅ Installation définitive haut de gamme : câblage propre, postes encastrables','✅ Audio hybride colonnes + points sources : couverture homogène quelle que soit la position','✅ Suivi caméra automatique : captation vidéo professionnelle sans opérateur','✅ Écran LED PURE fixe : résolution Full HD, sans maintenance projecteur'],
   opt:'Licences L-VT/L-ID. Confero 360 (71.98.3000). Plixus AE-R Dante (71.98.2904). 📝 TranscribIA Ill-Res 1an (3 800€)'},
 
  {id:'06',name:'Boardroom — uniCOS Core T',pax:'12 participants',sys:'Plixus AE-R + uniCOS Core T',
@@ -488,6 +496,7 @@ const BUNDLES = [
    {d:'Écran LED PURE 135" XWALL Pure',   b:'qs',     ref:'XW13515-PURESMD',q:1,p:23500,cat:'ecran'},
   ],
   specs:['uniCOS Core T : tactile 10", 6 flux vidéo, caméra 5MP, USB charge','Compatible Confero (pas CoCon) — logiciel salle inclus AE-R','Camera Control : 8 caméras PTZ, incrustation noms délégués','XWALL PURE 135" : multi-source HDMI, support mural inclus'],
+  args:['✅ Chaque participant voit les intervenants sur son propre écran tactile 10"','✅ Identification visuelle immédiate : noms des délégués incrustés sur la vidéo','✅ Charge USB intégrée au poste : moins de câbles sur la table','✅ Montée en gamme facile : passage à CoCon Discussion par simple licence'],
   opt:'Plixus V-IN/V-OUT (71.98.2921/2922). Plaques nominatives NP1 (71.98.2050). Confero 360. 📝 TranscribIA Ill-Res 1an (3 800€)'},
 
  {id:'07',name:'Boardroom — Arthur Holm DB2 / DB3 Talk',pax:'12 participants',sys:'Plixus AE-R + AH Talk',
@@ -512,6 +521,7 @@ const BUNDLES = [
    {d:'Écran LED PURE 135" XWALL Pure',       b:'qs',     ref:'XW13515-PURESMD',q:1,p:23500,sp:false,cat:'ecran'},
   ],
   specs:['DB2/DB3 Talk : élévateur micro indépendant, inclinaison 90°→20°, AHlink','PLM401F sur élévateur : push & lock, anti-GSM','⚠ Compatibilité 2EMM + Talk à confirmer avant commande','XWALL PURE 135" : dalle LED fixe, pitch 1,5mm, Full HD prestige'],
+  args:['✅ Table rase : zéro équipement visible — moniteurs et micros escamotables sous la table','✅ Prestige maximal : finition aluminium Arthur Holm, design récompensé','✅ Flexibilité totale : salle de direction convertible en salle de réunion neutre','✅ Chaque participant contrôle son moniteur et son micro indépendamment'],
   opt:'Écran tactile TS17/TS22 (+800–900€/u, SP). Caméra DCAMUSBDB3 (+650€/u, SP). AHDCRUSBCI (+900€/u). 📝 TranscribIA Ill-Res 1an (3 800€)'},
 
  {id:'08',name:'Salle de conseil (grande capacité)',pax:'~30 participants',sys:'Confidea F/FLEX + CoCon',
@@ -537,6 +547,7 @@ const BUNDLES = [
    {d:'Écran LED PURE 135" XWALL Pure',       b:'qs',     ref:'XW13515-PURESMD',q:1,p:23500,cat:'ecran'},
   ],
   specs:['Plixus NEXT : extension ports >32 postes, redondance réseau','CoCon Discussion : gestion réunion, API tiers, synoptique opérateur','UBX16 : 16 HP 3", 124dB @1m, portée ~40m — CS702 2×700W','ICONYX ICC12/3-RD (actif) : directivité contrôlée + Dante'],
+  args:['✅ Gestion complète de réunion : ordre du jour, temps de parole, rapports automatiques','✅ Synoptique opérateur CoCon : pilotage en temps réel par un technicien ou élu','✅ Architecture évolutive : passage à 64 postes et plus avec Plixus NEXT','✅ Connexion API tierces : intégration vote électronique, dématérialisation (Digitech, AIRS)'],
   opt:'CoCon Voting (+3 445€) + Authentication (+1 970€). CoCon Signage (2 030€/écran). 📝 TranscribIA Ill-Res 1an (3 800€)'},
 
  {id:'09',name:'Hémicycle — Interprétation infrarouge',pax:'~56 participants',sys:'uniCOS Pro + Lingua IR',
@@ -567,6 +578,7 @@ const BUNDLES = [
    {d:'Écran LED PURE 135" XWALL Pure',       b:'qs',     ref:'XW13515-PURESMD',q:1,p:23500,cat:'ecran'},
   ],
   specs:['uniCOS Pro T : tactile 10" rabattable, caméra 5MP, RFID, USB charge','Lingua T + RAD_H : IR numérique 40 canaux, 25W, délai auto','Lingua ID Mike : jusqu\'à 11 langues sans logiciel additionnel','2× Plixus NEXT : capacité >64 postes, redondance réseau assurée'],
+  args:['✅ Solution institutionnelle complète : conférence, vote, interprétation dans un seul système','✅ Conformité ISO 20109 : pupitre interprète certifié pour usages officiels','✅ Distribution IR sécurisée : pas d\'écoute parasite, signal confiné dans la salle','✅ Podium uniCOS Pro : écran 10" rabattable pour grands espaces, confort président'],
   opt:'Canaux IR suppl. : Lingua L12 (+1 355€) ou L40 (+4 475€). CoCon Interpretation. Valise 64 récepteurs (3 525€). 📝 TranscribIA Ill-Res 1an (3 800€)'},
 
  {id:'10',name:'Auditorium — Interprétation UNITE',pax:'~56 participants',sys:'uniCOS Pro + UNITE',
@@ -595,6 +607,7 @@ const BUNDLES = [
    {d:'Écran LED PURE 135" XWALL Pure',       b:'qs',     ref:'XW13515-PURESMD',q:1,p:23500,sp:false,cat:'ecran'},
   ],
   specs:['UNITE : distribution multilingue sans fil RF — alternative IR, plus discrète','uniCOS Pro T : tactile 10" rabattable, caméra 5MP, RFID, USB','Lingua ID Mike : jusqu\'à 11 langues sans logiciel additionnel','CS702 + 2×UBX16 : couverture longue portée auditorium, 2×700W'],
+  args:['✅ Interprétation invisible : récepteurs RF discrets, sans contrainte de visibilité IR','✅ Auditeurs illimités : ajout de récepteurs UNITE sans modifier l\'infrastructure','✅ Interopérabilité complète : UNITE s\'intègre nativement dans l\'écosystème Plixus','✅ Usage événementiel et permanent : location ou installation fixe, mêmes composants'],
   opt:'CoCon Voting + Authentication (+5 415€). CoCon Interpretation si >11 langues. uniCOS Pro F (+475€/u). 📝 TranscribIA Ill-Res 1an (3 800€)'},
 
  // BUNDLE 11 — F-BOX
@@ -616,6 +629,7 @@ const BUNDLES = [
    {d:'Support mural CX41',               b:'renkus', ref:'UBRKT/CF41B',q:4,p:50,  cat:'sono'},
   ],
   specs:['F-BOX : boîtier Plixus encastrable, 1 entrée micro, 1 HP, boutons LED','Intégration 100% discrète — aucun équipement visible sur table','Compatible licences vote/identification par F-BOX','Câblage et boutons accessoires sur devis selon plan de salle'],
+  args:['✅ Salle d\'apparat : table nue, zéro matériel apparent — esthétique maximale','✅ Sur-mesure total : boutons, symboles et configurations adaptés poste par poste','✅ Robustesse installation : pas de micro à perdre, pas de poste à recharger','✅ Intégration mobilier existant : compatible perforations standard, idéal bâtiments classés'],
   opt:'Boutons vote F-Box BTN (71.98.0526, 65€/u). Bouton MF PBTN (71.98.0525, 100€/u). Vote/identification : L-VT+L-ID. 📝 TranscribIA Lim12 1an (1 950€)'},
 ];
 
@@ -847,12 +861,15 @@ function buildBundle(b){
       const bUrl=URLS[it.b]?.url||'#';
       const bLbl=URLS[it.b]?.lbl||'';
       if(it._extra){
-        const exIdx=extras.indexOf(extras.find(e=>e.id===it.id));
+        const isSp=it.sp===true;
+        const qtEdit=isSp
+          ?`<span>${it.q}</span>`
+          :`<span class="qt">${it.q}</span><input class="qi" type="number" min="0" value="${it.q}" data-bid="${b.id}" data-exid="${it.id}" data-pu="${it.p}" data-cat="${cat}" onclick="event.stopPropagation()" oninput="onExtraQty(this)">`;
         rows+=`<tr class="extra-row"><td class="dn">+ ${it.d}<span class="lb">${bLbl}</span>
           <button class="rm-btn" onclick="removeExtra('${b.id}','${it.id}')">✕</button></td>
           <td class="brand brand-${it.b}">${BN[it.b]||it.b}</td><td class="ref">${it.ref}</td>
-          <td class="qc"><span>${it.q}</span></td><td class="pr">${pu}</td>
-          <td class="lt">${lt}</td></tr>`;
+          <td class="qc">${qtEdit}</td><td class="pr">${pu}</td>
+          <td class="lt" id="exlt-${b.id}-${it.id}">${lt}</td></tr>`;
       } else {
         const canEdit=!isSp&&!it._ps;
         const qtEdit=canEdit
@@ -915,6 +932,10 @@ function buildBundle(b){
       <div class="specs-blk"><div class="blk-lbl">Spécifications clés</div><ul class="spec-list">${b.specs.map(s=>`<li>${s}</li>`).join('')}</ul></div>
       <div class="opt-blk"><div class="blk-lbl">Options & upsell</div><div class="opt-text">${b.opt}</div></div>
     </div>
+    <div class="args-blk">
+      <div class="blk-lbl">Arguments clés</div>
+      <ul class="args-list">${(b.args||[]).map(a=>`<li>${a}</li>`).join('')}</ul>
+    </div>
   </div>`;
 }
 
@@ -922,33 +943,108 @@ function buildBundle(b){
 // UNITE PAGE
 // ═══════════════════════════════════════════════
 function buildUnitePage(){
-  const items=[
-    {d:'Transmetteur UNITE (central, rack)',    ref:'—',   note:'Interface centrale ↔ Plixus. Rack 1U.'},
-    {d:'Récepteur UNITE CC320 (casque incl.)', ref:'—',   note:'Récepteur individuel sans fil RF, avec casque.'},
-    {d:'Récepteur UNITE CC Mono (oreillette)', ref:'—',   note:'Récepteur discret type oreillette.'},
-    {d:'Mallette de charge CC (5 récepteurs)', ref:'—',   note:'Charge et transport simultanés de 5 récepteurs.'},
-    {d:'Chargeur desktop (1 récepteur)',        ref:'—',   note:'Chargeur de bureau individuel.'},
-    {d:'Récepteur monitoring interprète',       ref:'—',   note:'Pour contrôle cabine — sortie casque.'},
-    {d:'Logiciel UNITE Manager',                ref:'—',   note:'Configuration et supervision du système.'},
+  const fmt2=(n)=>n.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+
+  const UNITE_DATA=[
+    {section:'📡 Récepteurs de poche', items:[
+      {ref:'71.98.4000',d:'Unite RP (EU) — Récepteur numérique de poche',note:'Écran OLED, mini-jack stéréo, USB-C, batterie Li-Ion int., clip ceinture',pub:290},
+      {ref:'71.98.4003',d:'Unite RP-T (EU) — Récepteur avec talkback',note:'Fonction talkback, micro intégré, écran OLED, mini-jack stéréo, USB-C',pub:360},
+    ]},
+    {section:'🎙 Émetteurs', items:[
+      {ref:'71.98.4010',d:'Unite TP (EU) — Émetteur numérique de poche',note:'Micro interne, bouton mute, mini-XLR, Bluetooth, USB-C, batterie Li-Ion',pub:475},
+      {ref:'71.98.4013',d:'Unite TH (EU) — Microphone main sans fil',note:'Capsule condensateur électret, écran OLED, bouton mute, Bluetooth, USB-C',pub:675},
+    ]},
+    {section:'🔁 Point d\'accès', items:[
+      {ref:'71.98.4030',d:'Unite AP4 (EU) — Émetteur-récepteur 4 canaux',note:'Antennes intégrées, Ethernet, Dante (PoE), 4 entrées/sorties analogiques, support mural + pied',pub:2500},
+    ]},
+    {section:'🔋 Chargeurs & Transport', items:[
+      {ref:'71.98.4046',d:'Unite CC — Mallette chargement 36 postes',note:'36 baies (18 compatibles TH), port USB + Ethernet, alimentation int.',pub:2750},
+      {ref:'71.98.4047',d:'Unite CC Trolley — Chariot pour valise CC',note:'Chariot escamotable à roulettes pour valise Unite CC',pub:120},
+      {ref:'71.98.4042',d:'Unite CR-12P — Chargeur rack 12 postes (19", 2U)',note:'12 postes, Ethernet, alimentation int., rack 19", 2U',pub:1400},
+      {ref:'71.98.4043',d:'Unite CDS-4/2 — Chargeur bureau 4 postes',note:'4 postes (2 compatibles TH), Ethernet, USB-C, alimentation incluse',pub:750},
+      {ref:'71.98.4044',d:'Unite CDD-8/4 — Chargeur bureau 8 postes',note:'8 postes (4 compatibles TH), Ethernet, USB-C, alimentation incluse',pub:1000},
+      {ref:'71.98.4045',d:'Unite DS-4/2 — Chargeur bureau 4 postes (base)',note:'4 postes (2 compatibles TH), USB-C, alimentation incluse, sans réseau',pub:440},
+      {ref:'71.98.4039',d:'Unite BP — Batterie rechange (lot de 6)',note:'Batterie Li-Ion pour Unite TP, RP, RP-T',pub:300},
+    ]},
+    {section:'🎧 Accessoires audio & Microphones', items:[
+      {ref:'71.04.0157',d:'TG H34 — Micro tour de cou supercardioïde, noir',note:'Condensateur, mini-XLR 4p, anti-vent inclus',pub:70},
+      {ref:'71.04.0158',d:'TG H56 — Mini micro cravate omnidirectionnel, noir',note:'Condensateur, mini-XLR 4p, bonnette anti-vent',pub:180},
+      {ref:'71.04.0159',d:'TG H56 tan — Mini micro cravate omnidirectionnel, beige',note:'Condensateur, mini-XLR 4p, bonnette anti-vent',pub:180},
+      {ref:'71.04.0160',d:'TG H57 tan — Mini micro cravate, beige',note:'Condensateur omnidirectionnel, mini-XLR 4p, bonnette anti-vent',pub:170},
+      {ref:'71.04.0161',d:'TG L58 — Micro lavalier noir (∅6mm)',note:'Condensateur omnidirectionnel, mini-XLR 4p, bonnette anti-vent',pub:130},
+      {ref:'71.04.0162',d:'HSP 321 — Casque mono-oreille + micro électret',note:'Perche pivotante, câble 0,9m, mini-jack 3,5mm 4 broches',pub:150},
+      {ref:'71.04.0154',d:'TEL152 — Casque stéréo léger',note:'Compatible récepteurs UNITE et Lingua',pub:35},
+      {ref:'71.04.0155',d:'EP152 — Écouteurs légers (sac 10 pièces)',note:'Jack coudé 3,5mm, compatible UNITE et récepteur Lingua',pub:285},
+      {ref:'71.04.0164',d:'IL 200 — Boucle d\'induction personnelle',note:'0,2m + rallonge 0,77m, jack stéréo 3,5mm, conforme EN 60118-4',pub:80},
+      {ref:'—',d:'TEL20 — Casque stéréo Televic',note:'Casque léger Televic dédié récepteurs UNITE / Lingua',pub:null},
+    ]},
   ];
-  const rows=items.map(it=>`<tr>
-    <td>${it.d}</td><td class="ref">${it.ref}</td>
-    <td style="color:var(--k50);font-size:11px">${it.note}</td>
-    <td class="sp">Sur Projet</td></tr>`).join('');
+
+  // Flatten items with unique ids for state management
+  const allItems=[];
+  UNITE_DATA.forEach((sec,si)=>sec.items.forEach((it,ii)=>allItems.push({...it,uid:`u${si}_${ii}`})));
+  if(!window._uniteQty) window._uniteQty={};
+  allItems.forEach(it=>{ if(window._uniteQty[it.uid]===undefined) window._uniteQty[it.uid]=0; });
+
+  const calcTotal=()=>allItems.reduce((s,it)=>s+(it.pub??(0))*(window._uniteQty[it.uid]??0),0);
+
+  let sectionsHtml='';
+  UNITE_DATA.forEach((sec,si)=>{
+    sectionsHtml+=`<tr style="background:var(--bg)"><td colspan="4" style="padding:10px 8px 4px;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--k50)">${sec.section}</td></tr>`;
+    sec.items.forEach((it,ii)=>{
+      const uid=`u${si}_${ii}`;
+      const prixHtml=it.pub!==null?fmt2(it.pub):'<span style="color:var(--k50);font-style:italic">À définir</span>';
+      const q=window._uniteQty[uid]??0;
+      const lt=it.pub!==null&&q>0?fmt2(it.pub*q):'—';
+      sectionsHtml+=`<tr style="border-bottom:1px solid var(--k12)">
+        <td class="ref" style="padding:8px">${it.ref}</td>
+        <td style="padding:8px"><strong style="font-size:11.5px">${it.d}</strong><br><span style="font-size:10px;color:var(--k50)">${it.note}</span></td>
+        <td style="text-align:right;padding:8px;white-space:nowrap;font-variant-numeric:tabular-nums">${prixHtml}</td>
+        <td style="text-align:center;padding:8px;width:70px">
+          <input type="number" min="0" value="${q}" style="width:52px;padding:3px 5px;text-align:center;border:1.5px solid var(--k12);border-radius:5px;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;outline:none;" oninput="uniteQtyChange(this,'${uid}')" onfocus="this.style.borderColor='var(--green)'" onblur="this.style.borderColor='var(--k12)'">
+        </td>
+        <td style="text-align:right;padding:8px;white-space:nowrap;font-weight:600;font-variant-numeric:tabular-nums;color:var(--k90)" id="ult-${uid}">${lt}</td>
+      </tr>`;
+    });
+  });
+
+  const total=calcTotal();
+  sectionsHtml+=`<tr style="background:var(--k90)">
+    <td colspan="3" style="padding:10px 8px;color:var(--white);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">TOTAL HT INDICATIF</td>
+    <td colspan="2" style="padding:10px 8px;text-align:right;color:var(--green);font-size:15px;font-weight:800;font-variant-numeric:tabular-nums" id="unite-total">${total>0?fmt2(total):'—'}</td>
+  </tr>`;
+
   return `
   <div class="unite-hero">
     <div class="unite-hero-num">RÉFÉRENCE PRODUITS</div>
     <h2>Gamme UNITE — Distribution multilingue sans fil</h2>
-    <p>Système RF de distribution simultanée multilingue — alternative discrète à l'infrarouge. Compatible Plixus.</p>
+    <p>Système RF numérique — alternative discrète à l'infrarouge, compatible Plixus / CoCon.</p>
   </div>
   <div class="unite-body">
-    <div class="unite-desc">Le système UNITE permet la distribution sans fil de l'interprétation simultanée vers un nombre illimité d'auditeurs, sans contrainte de visibilité (contrairement à l'IR). Il se connecte directement au réseau Plixus et s'intègre nativement avec CoCon Interpretation pour la gestion des langues. Tous les éléments UNITE sont tarifés Sur Projet selon la configuration exacte (nombre de récepteurs, nombre de canaux, distances de couverture).</div>
-    <table class="unite-table">
-      <thead><tr><th>Désignation</th><th>Réf.</th><th>Description</th><th class="r">Prix HT</th></tr></thead>
-      <tbody>${rows}</tbody>
+    <div class="unite-desc">Le système UNITE permet la distribution sans fil de l'interprétation simultanée vers un nombre illimité d'auditeurs, sans contrainte de visibilité (contrairement à l'IR). Il se connecte via le point d'accès AP4 (Dante/analogique) et s'intègre nativement à l'écosystème Plixus/CoCon. Saisissez les quantités souhaitées pour estimer le montant total.</div>
+    <table class="unite-table" style="table-layout:fixed;width:100%">
+      <colgroup><col style="width:14%"><col style="width:42%"><col style="width:15%"><col style="width:9%"><col style="width:20%"></colgroup>
+      <thead><tr><th>Réf.</th><th>Désignation</th><th class="r">Prix HT</th><th style="text-align:center">Qté</th><th class="r">Total HT</th></tr></thead>
+      <tbody>${sectionsHtml}</tbody>
     </table>
-    <div class="unite-note">⚠ Tous les produits UNITE sont tarifés Sur Projet (SP) — contactez le support commercial Televic Conference pour une configuration sur-mesure. Les prix varient selon le nombre de récepteurs, la couverture RF requise et les options de charge.</div>
+    <div class="unite-note">⚠ TEL20 : référence et prix à confirmer — ajout en attente. Prix HT indicatifs. Contact commercial pour tarification projet.</div>
   </div>`;
+}
+
+function uniteQtyChange(input, uid){
+  const q=Math.max(0,parseInt(input.value)||0);
+  if(!window._uniteQty) window._uniteQty={};
+  window._uniteQty[uid]=q;
+  // Find price from UNITE_DATA
+  const allPrices={'u0_0':290,'u0_1':360,'u1_0':475,'u1_1':675,'u2_0':2500,'u3_0':2750,'u3_1':120,'u3_2':1400,'u3_3':750,'u3_4':1000,'u3_5':440,'u3_6':300,'u4_0':70,'u4_1':180,'u4_2':180,'u4_3':170,'u4_4':130,'u4_5':150,'u4_6':35,'u4_7':285,'u4_8':80,'u4_9':null};
+  const pub=allPrices[uid];
+  const ltEl=document.getElementById(`ult-${uid}`);
+  const fmt2=(n)=>n.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+  if(ltEl) ltEl.textContent=(pub!==null&&pub!==undefined&&q>0)?fmt2(pub*q):'—';
+  // Recalc total
+  const total=Object.entries(window._uniteQty).reduce((s,[k,v])=>{const p=allPrices[k];return s+(p??0)*v;},0);
+  const totEl=document.getElementById('unite-total');
+  if(totEl) totEl.textContent=total>0?fmt2(total):'—';
 }
 
 // ═══════════════════════════════════════════════
@@ -979,6 +1075,16 @@ function onQty(input){
     if(orig) orig.q=q;
   }
   const lt=document.getElementById(`lt-${bid}-${i}`);
+  if(lt) lt.textContent=fmt(q*pu);
+  refreshTotals(bid,cat);
+}
+
+function onExtraQty(input){
+  const bid=input.dataset.bid, exId=input.dataset.exid, pu=parseFloat(input.dataset.pu), cat=input.dataset.cat;
+  const q=Math.max(0,parseInt(input.value)||0);
+  const ex=extraItems[bid].find(e=>e.id===exId);
+  if(ex) ex.q=q;
+  const lt=document.getElementById(`exlt-${bid}-${exId}`);
   if(lt) lt.textContent=fmt(q*pu);
   refreshTotals(bid,cat);
 }
